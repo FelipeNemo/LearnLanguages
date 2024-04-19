@@ -1,0 +1,264 @@
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do sistema:
+quantidade de estudantes: 2
+quantidade de professores: 3
+saldo da carteira do sistema: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do professor Bruce Lee:
+
+habilidades linguísticas do professor Bruce Lee:
+[idioma: Chines], [proficiencia: Nativo]
+[idioma: Ingles], [proficiencia: C2]
+
+lista de idiomas que o professor Bruce Lee ensina:
+[idioma: Chines], [proficiencia: Nativo]
+
+tipos de aula que o professor Bruce Lee ensina:
+[idioma: Chines], [descricao: Conversacao. Pratique conversar em Chines com um astro do cinema.], [preco: 10.0], [id: 0]
+[idioma: Chines], [descricao: Vocabulario. Aprenda o vocabulario das artes marciais.], [preco: 5.0], [id: 1]
+
+lista de horários do professor Bruce Lee:
+[horario: 2024-02-01 20:00:00], [disponivel: True]
+[horario: 2024-02-02 20:00:00], [disponivel: True]
+[horario: 2024-02-03 20:00:00], [disponivel: True]
+[horario: 2024-02-04 20:00:00], [disponivel: True]
+[horario: 2024-02-05 20:00:00], [disponivel: True]
+[horario: 2024-03-01 20:00:00], [disponivel: True]
+[horario: 2024-03-02 20:00:00], [disponivel: True]
+[horario: 2024-03-03 20:00:00], [disponivel: True]
+[horario: 2024-03-04 20:00:00], [disponivel: True]
+[horario: 2024-03-05 20:00:00], [disponivel: True]
+[horario: 2024-04-01 20:00:00], [disponivel: True]
+[horario: 2024-04-02 20:00:00], [disponivel: True]
+[horario: 2024-04-03 20:00:00], [disponivel: True]
+[horario: 2024-04-04 20:00:00], [disponivel: True]
+[horario: 2024-04-05 20:00:00], [disponivel: True]
+[horario: 2024-05-01 20:00:00], [disponivel: True]
+[horario: 2024-05-02 20:00:00], [disponivel: True]
+[horario: 2024-05-03 20:00:00], [disponivel: True]
+[horario: 2024-05-04 20:00:00], [disponivel: True]
+[horario: 2024-05-05 20:00:00], [disponivel: True]
+[horario: 2027-07-07 07:00:00], [disponivel: True]
+
+lista de estudantes do professor Bruce Lee:
+
+pedidos de agendamento do professor Bruce Lee:
+
+aulas concluídas pelo professor Bruce Lee:
+
+saldo da carteira do professor Bruce Lee: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do professor Roberto Bolanos:
+
+habilidades linguísticas do professor Roberto Bolanos:
+[idioma: Espanhol], [proficiencia: Nativo]
+[idioma: Ingles], [proficiencia: B2]
+
+lista de idiomas que o professor Roberto Bolanos ensina:
+[idioma: Espanhol], [proficiencia: Nativo]
+
+tipos de aula que o professor Roberto Bolanos ensina:
+[idioma: Espanhol], [descricao: Conversacao. Pratique conversar em Espanhol com um astro do cinema.], [preco: 10.0], [id: 0]
+
+lista de horários do professor Roberto Bolanos:
+[horario: 2024-03-01 14:00:00], [disponivel: True]
+[horario: 2024-03-02 14:00:00], [disponivel: True]
+[horario: 2024-03-03 14:00:00], [disponivel: True]
+[horario: 2024-03-04 14:00:00], [disponivel: True]
+[horario: 2024-03-05 14:00:00], [disponivel: True]
+[horario: 2024-04-01 14:00:00], [disponivel: True]
+[horario: 2024-04-02 14:00:00], [disponivel: True]
+[horario: 2024-04-03 14:00:00], [disponivel: True]
+[horario: 2024-04-04 14:00:00], [disponivel: True]
+[horario: 2024-04-05 14:00:00], [disponivel: True]
+[horario: 2024-05-01 14:00:00], [disponivel: True]
+[horario: 2024-05-02 14:00:00], [disponivel: True]
+[horario: 2024-05-03 14:00:00], [disponivel: True]
+[horario: 2024-05-04 14:00:00], [disponivel: True]
+[horario: 2024-05-05 14:00:00], [disponivel: True]
+[horario: 2027-07-07 07:00:00], [disponivel: True]
+
+lista de estudantes do professor Roberto Bolanos:
+
+pedidos de agendamento do professor Roberto Bolanos:
+
+aulas concluídas pelo professor Roberto Bolanos:
+
+saldo da carteira do professor Roberto Bolanos: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do professor Heitor Villa-Lobos:
+
+habilidades linguísticas do professor Heitor Villa-Lobos:
+[idioma: Portugues], [proficiencia: Nativo]
+[idioma: Ingles], [proficiencia: C2]
+[idioma: Italiano], [proficiencia: C1]
+[idioma: Frances], [proficiencia: B2]
+[idioma: Alemao], [proficiencia: B1]
+
+lista de idiomas que o professor Heitor Villa-Lobos ensina:
+[idioma: Portugues], [proficiencia: Nativo]
+[idioma: Italiano], [proficiencia: C1]
+
+tipos de aula que o professor Heitor Villa-Lobos ensina:
+[idioma: Portugues], [descricao: Conversacao. Pratique conversar em portugues com um genio brasileiro da musica erudita.], [preco: 50.0], [id: 0]
+[idioma: Italiano], [descricao: Aulas para iniciantes. Aprenda o basico de italiano com um genio brasileiro da musica erudita.], [preco: 10.0], [id: 1]
+
+lista de horários do professor Heitor Villa-Lobos:
+[horario: 2024-04-01 15:00:00], [disponivel: True]
+[horario: 2024-04-02 15:00:00], [disponivel: True]
+[horario: 2024-04-03 15:00:00], [disponivel: True]
+[horario: 2024-04-04 15:00:00], [disponivel: True]
+[horario: 2024-04-05 15:00:00], [disponivel: True]
+[horario: 2024-05-01 15:00:00], [disponivel: True]
+[horario: 2024-05-02 15:00:00], [disponivel: True]
+[horario: 2024-05-03 15:00:00], [disponivel: True]
+[horario: 2024-05-04 15:00:00], [disponivel: True]
+[horario: 2024-05-05 15:00:00], [disponivel: True]
+[horario: 2024-06-01 15:00:00], [disponivel: True]
+[horario: 2024-06-02 15:00:00], [disponivel: True]
+[horario: 2024-06-03 15:00:00], [disponivel: True]
+[horario: 2024-06-04 15:00:00], [disponivel: True]
+[horario: 2024-06-05 15:00:00], [disponivel: True]
+[horario: 2025-08-03 20:00:00], [disponivel: True]
+
+lista de estudantes do professor Heitor Villa-Lobos:
+
+pedidos de agendamento do professor Heitor Villa-Lobos:
+
+aulas concluídas pelo professor Heitor Villa-Lobos:
+
+saldo da carteira do professor Heitor Villa-Lobos: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do estudante Dominic Toretto:
+
+habilidades linguísticas do estudante Dominic Toretto:
+[idioma: Ingles], [proficiencia: Nativo]
+[idioma: Portugues], [proficiencia: A1]
+[idioma: Espanhol], [proficiencia: B2]
+[idioma: Chines], [proficiencia: A1]
+
+lista de idiomas que o estudante Dominic Toretto deseja aprender:
+[idioma: Portugues], [proficiencia: A1]
+[idioma: Espanhol], [proficiencia: B2]
+[idioma: Chines], [proficiencia: A1]
+
+lista de horários do estudante Dominic Toretto:
+
+lista de professores do estudante Dominic Toretto:
+
+aulas concluídas pelo estudante Dominic Toretto:
+
+o estudante Dominic Toretto ainda não possui nenhuma aula concluída
+
+saldo da carteira do estudante: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+
+#########################
+#########################
+#########################
+#########################
+#########################
+relatório do estudante Barack Obama:
+
+habilidades linguísticas do estudante Barack Obama:
+[idioma: Ingles], [proficiencia: Nativo]
+[idioma: Chines], [proficiencia: B1]
+[idioma: Espanhol], [proficiencia: A2]
+
+lista de idiomas que o estudante Barack Obama deseja aprender:
+[idioma: Chines], [proficiencia: B1]
+[idioma: Espanhol], [proficiencia: A2]
+
+lista de horários do estudante Barack Obama:
+
+lista de professores do estudante Barack Obama:
+
+aulas concluídas pelo estudante Barack Obama:
+
+o estudante Barack Obama ainda não possui nenhuma aula concluída
+
+saldo da carteira do estudante: 0.0 reais
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+adicionar_professor>>>>>Bruce Lee>>>>>brucelee@gmail.com>>>>>China>>>>>Estados Unidos
+adicionar_professor>>>>>Roberto Bolanos>>>>>robertobolanos@gmail.com>>>>>Mexico>>>>>Mexico
+adicionar_professor>>>>>Heitor Villa-Lobos>>>>>heitorVillaLobos@gmail.com>>>>>Brasil>>>>>Franca
+
+adicionar_estudante>>>>>Dominic Toretto>>>>>dominictoretto@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+adicionar_estudante>>>>>Barack Obama>>>>>barackobama@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+
+imprimir_relatorio_do_sistema

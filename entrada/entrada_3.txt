@@ -1,0 +1,25 @@
+adicionar_professor>>>>>Bruce Lee>>>>>brucelee@gmail.com>>>>>China>>>>>Estados Unidos
+adicionar_professor>>>>>Roberto Bolanos>>>>>robertobolanos@gmail.com>>>>>Mexico>>>>>Mexico
+adicionar_professor>>>>>Heitor Villa-Lobos>>>>>heitorVillaLobos@gmail.com>>>>>Brasil>>>>>Franca
+
+adicionar_estudante>>>>>Dominic Toretto>>>>>dominictoretto@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+adicionar_estudante>>>>>Barack Obama>>>>>barackobama@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+
+adicionar_idioma>>>>>brucelee@gmail.com>>>>>Chines>>>>>Nativo
+adicionar_idioma>>>>>brucelee@gmail.com>>>>>Ingles>>>>>C2
+adicionar_idioma>>>>>robertobolanos@gmail.com>>>>>Espanhol>>>>>Nativo
+adicionar_idioma>>>>>robertobolanos@gmail.com>>>>>Ingles>>>>>B2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Portugues>>>>>Nativo
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Ingles>>>>>C2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Italiano>>>>>C1
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Frances>>>>>B2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Alemao>>>>>B1
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Ingles>>>>>Nativo
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Portugues>>>>>A1
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Espanhol>>>>>B2
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Chines>>>>>A1
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Ingles>>>>>Nativo
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Chines>>>>>B1
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Espanhol>>>>>A2
+
+imprimir_relatorio_do_sistema

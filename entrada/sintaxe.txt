@@ -1,0 +1,23 @@
+adicionar_professor >>>>> nome_do_professor >>>>> email_do_professor >>>>> pais_de_origem >>>>> pais_atual
+
+adicionar_estudante >>>>> nome_do_estudante >>>>> email_do_estudante >>>>> pais_de_origem >>>>> pais_atual
+
+adicionar_idioma >>>>> email_do_usuario >>>>> nome_do_idioma >>>>> nivel_de_proficiencia
+
+adicionar_idioma_que_professor_ensina >>>>> email_do_professor >>>>> nome_do_idioma >>>>> nivel_de_proficiencia
+
+adicionar_idioma_que_estudante_aprende >>>>> email_do_estudante >>>>> nome_do_idioma >>>>> nivel_de_proficiencia
+
+adicionar_tipo_de_aula >>>>> email_do_professor >>>>> nome_do_idioma >>>>> descricao_da_aula >>>>> preco_da_aula >>>>> id_do_tipo_de_aula
+
+adicionar_horario >>>>> email_do_professor >>>>> ano-mes-dia-hora-minuto
+
+depositar_dinheiro >>>>> email_do_usuario >>>>> valor
+
+agendar_aula >>>>> email_do_estudante >>>>> ano-mes-dia-hora-minuto >>>>> id_do_tipo_de_aula >>>>> email_do_professor
+
+aceitar_pedido_de_agendamento_de_aula >>>>> email_do_professor >>>>> ano-mes-dia-hora-minuto >>>>> id_do_tipo_de_aula >>>>> email_do_estudante >>>>> aceitar_agendamento (True/False)
+
+confirmar_aula_concluida >>>>> email_do_estudante >>>>> ano-mes-dia-hora-minuto >>>>> id_do_tipo_de_aula >>>>> email_do_professor >>>>> confirmar_conclusao_da_aula (True/False)
+
+imprimir_relatorio_do_sistema

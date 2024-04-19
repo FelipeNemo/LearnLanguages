@@ -1,0 +1,99 @@
+adicionar_professor>>>>>Bruce Lee>>>>>brucelee@gmail.com>>>>>China>>>>>Estados Unidos
+adicionar_professor>>>>>Roberto Bolanos>>>>>robertobolanos@gmail.com>>>>>Mexico>>>>>Mexico
+adicionar_professor>>>>>Heitor Villa-Lobos>>>>>heitorVillaLobos@gmail.com>>>>>Brasil>>>>>Franca
+
+adicionar_estudante>>>>>Dominic Toretto>>>>>dominictoretto@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+adicionar_estudante>>>>>Barack Obama>>>>>barackobama@gmail.com>>>>>Estados Unidos>>>>>Estados Unidos
+
+adicionar_idioma>>>>>brucelee@gmail.com>>>>>Chines>>>>>Nativo
+adicionar_idioma>>>>>brucelee@gmail.com>>>>>Ingles>>>>>C2
+adicionar_idioma>>>>>robertobolanos@gmail.com>>>>>Espanhol>>>>>Nativo
+adicionar_idioma>>>>>robertobolanos@gmail.com>>>>>Ingles>>>>>B2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Portugues>>>>>Nativo
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Ingles>>>>>C2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Italiano>>>>>C1
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Frances>>>>>B2
+adicionar_idioma>>>>>heitorVillaLobos@gmail.com>>>>>Alemao>>>>>B1
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Ingles>>>>>Nativo
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Portugues>>>>>A1
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Espanhol>>>>>B2
+adicionar_idioma>>>>>dominictoretto@gmail.com>>>>>Chines>>>>>A1
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Ingles>>>>>Nativo
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Chines>>>>>B1
+adicionar_idioma>>>>>barackobama@gmail.com>>>>>Espanhol>>>>>A2
+
+adicionar_idioma_que_professor_ensina>>>>>brucelee@gmail.com>>>>>Chines>>>>>Nativo
+adicionar_idioma_que_professor_ensina>>>>>robertobolanos@gmail.com>>>>>Espanhol>>>>>Nativo
+adicionar_idioma_que_professor_ensina>>>>>heitorVillaLobos@gmail.com>>>>>Portugues>>>>>Nativo
+adicionar_idioma_que_professor_ensina>>>>>heitorVillaLobos@gmail.com>>>>>Italiano>>>>>C1
+
+adicionar_idioma_que_estudante_aprende>>>>>dominictoretto@gmail.com>>>>>Portugues>>>>>A1
+adicionar_idioma_que_estudante_aprende>>>>>dominictoretto@gmail.com>>>>>Espanhol>>>>>B2
+adicionar_idioma_que_estudante_aprende>>>>>dominictoretto@gmail.com>>>>>Chines>>>>>A1
+adicionar_idioma_que_estudante_aprende>>>>>barackobama@gmail.com>>>>>Chines>>>>>B1
+adicionar_idioma_que_estudante_aprende>>>>>barackobama@gmail.com>>>>>Espanhol>>>>>A2
+
+adicionar_tipo_de_aula>>>>>brucelee@gmail.com>>>>>Chines>>>>>Conversacao. Pratique conversar em Chines com um astro do cinema.>>>>>10.0>>>>>0
+adicionar_tipo_de_aula>>>>>brucelee@gmail.com>>>>>Chines>>>>>Vocabulario. Aprenda o vocabulario das artes marciais.>>>>>5.0>>>>>1
+adicionar_tipo_de_aula>>>>>robertobolanos@gmail.com>>>>>Espanhol>>>>>Conversacao. Pratique conversar em Espanhol com um astro do cinema.>>>>>10.0>>>>>0
+adicionar_tipo_de_aula>>>>>heitorVillaLobos@gmail.com>>>>>Portugues>>>>>Conversacao. Pratique conversar em portugues com um genio brasileiro da musica erudita.>>>>>50.0>>>>>0
+adicionar_tipo_de_aula>>>>>heitorVillaLobos@gmail.com>>>>>Italiano>>>>>Aulas para iniciantes. Aprenda o basico de italiano com um genio brasileiro da musica erudita.>>>>>10.0>>>>>1
+
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-02-01-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-02-02-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-02-03-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-02-04-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-02-05-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-03-01-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-03-02-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-03-03-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-03-04-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-03-05-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-04-01-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-04-02-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-04-03-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-04-04-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-04-05-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-05-01-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-05-02-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-05-03-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-05-04-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2024-05-05-20-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2027-07-07-07-00-00
+adicionar_horario>>>>>brucelee@gmail.com>>>>>2027-07-07-07-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-03-01-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-03-02-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-03-03-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-03-04-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-03-05-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-04-01-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-04-02-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-04-03-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-04-04-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-04-05-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-05-01-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-05-02-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-05-03-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-05-04-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2024-05-05-14-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2027-07-07-07-00-00
+adicionar_horario>>>>>robertobolanos@gmail.com>>>>>2027-07-07-07-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-04-01-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-04-02-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-04-03-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-04-04-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-04-05-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-05-01-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-05-02-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-05-03-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-05-04-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-05-05-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-06-01-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-06-02-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-06-03-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-06-04-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2024-06-05-15-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2025-08-03-20-00-00
+adicionar_horario>>>>>heitorVillaLobos@gmail.com>>>>>2025-08-03-20-00-00
+
+imprimir_relatorio_do_sistema

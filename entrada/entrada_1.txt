@@ -1,0 +1,5 @@
+adicionar_professor>>>>>Bruce Lee>>>>>brucelee@gmail.com>>>>>China>>>>>Estados Unidos
+adicionar_professor>>>>>Roberto Bolanos>>>>>robertobolanos@gmail.com>>>>>Mexico>>>>>Mexico
+adicionar_professor>>>>>Heitor Villa-Lobos>>>>>heitorVillaLobos@gmail.com>>>>>Brasil>>>>>Franca
+
+imprimir_relatorio_do_sistema
