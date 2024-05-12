@@ -24,15 +24,15 @@ sequência de operações que estarão pré-definidas em um arquivo.
 ### Especificações e requisitos do sistema de aprendizagem de idiomas:
 
 1) Todo este sistema deve ser implementado como um pacote do Python chamado
-LearnLanguages, composto por um módulo Users. Subpacotes e submodulos são opcionais. Feito
+LearnLanguages, composto por um módulo Users. Subpacotes e submodulos são opcionais. Feito!
 
-2) Todos os atributos das classes precisam ter seu acesso gerenciado por setters e getters. 50% Feito
+2) Todos os atributos das classes precisam ter seu acesso gerenciado por setters e getters. Feito!
 
 3) Caso existam valores inválidos, o programa deve lançar exceções, as quais devem ser
-tratadas para que o programa não pare de funcionar na aplicação (app.py).
+tratadas para que o programa não pare de funcionar na aplicação (app.py). Feito!
 
 4) Implementar a classe Idioma, a qual armazena o nome do idioma (50 caracteres no máximo) e
-nível de proficiência (A1, A2, B1, B2, C1, C2, ou Nativo).
+nível de proficiência (A1, A2, B1, B2, C1, C2, ou Nativo). Feito!
 
 5) Implementar a classe Horario para representar os horários em que o professor está disponível
 para lecionar as aulas de idiomas. O pacote datetime pode ser utilizado para representar a
@@ -50,28 +50,28 @@ de dinheiro entre carteiras.
 
 9) Implementar a classe abstrata Usuario: Feito
 
-a) Atributos:
-i) Nome do usuário com no maximo 50 caracteres.
-ii) E-mail com no maximo 50 caracteres.
-iii) País de origem com no máximo 10 caracteres.
-iv) País atual com no máximo 10 caracteres.
-v) Lista de idiomas que o usuário sabe falar.
-vi) Lista de horários do usuário.
-vii) Objeto do tipo carteira, necessário para efetuar ou receber pagamentos das
+* a) Atributos:
+- i) Nome do usuário com no maximo 50 caracteres.
+- ii) E-mail com no maximo 50 caracteres.
+- iii) País de origem com no máximo 10 caracteres.
+- iv) País atual com no máximo 10 caracteres.
+- v) Lista de idiomas que o usuário sabe falar.
+- vi) Lista de horários do usuário.
+- vii) Objeto do tipo carteira, necessário para efetuar ou receber pagamentos das
 aulas.
 
-b) Métodos:
-i) imprimirRelatorio: Método abstrato que deve ser implementado pelas classes
+* b) Métodos:
+- i) imprimirRelatorio: Método abstrato que deve ser implementado pelas classes
 que herdam a classe Usuario. O método deve imprimir um relatório completo
 sobre as atividades do usuário.
-ii) Demais métodos que deseja implementar.
+- ii) Demais métodos que deseja implementar.
 
 10) Implemente a classe Estudante como uma subclasse de Usuario: Feito
-a) Atributos:
-i) Lista de idiomas que o estudante deseja aprender.
-ii) Lista de professores do estudante.
-b) Métodos:
-i) imprimirRelatorio:
+* a) Atributos:
+- i) Lista de idiomas que o estudante deseja aprender.
+- ii) Lista de professores do estudante.
+* b) Métodos:
+- i) imprimirRelatorio:
 (1) Listar Idiomas que o estudante sabe falar;
 (2) Listar Idiomas que o estudante deseja aprender;
 (3) Listar horários do estudante;
@@ -82,28 +82,28 @@ estudante teve mais aulas, e quantas foram);
 (7) Exibir idioma favorito do estudante (com qual idioma o estudante teve
 mais aulas, e quantas foram);
 (8) Exibir saldo da carteira do estudante.
-ii) agendarAula: Efetua o pedido de agendamento de uma aula com um
+- ii) agendarAula: Efetua o pedido de agendamento de uma aula com um
 professor. O pedido contém o horário e o tipo de aula. O estudante só pode
 realizar o pedido de agendamento se tiver saldo o suficiente na carteira.
-iii) confirmarQueAulaFoiConcluida: O estudante confima se a aula com o
+- iii) confirmarQueAulaFoiConcluida: O estudante confima se a aula com o
 professor foi concluída. Se sim, 90% do valor do preço da aula deve ser
 transferido para a carteira do professor. Os 10% restantes do valor devem ser
 transferidos para a carteira do sistema. Caso a aula não tenha sido concluída,
 o dinheiro deve permanecer na carteira do estudante.
 
 11) Implementar a classe Professor como uma subclasse de Usuario: Feito
-a) Atributos:
-i) Lista de idiomas que o professor ensina.
-ii) Lista de estudantes do professor.
-b) Métodos:
-i) imprimirRelatorio:
+* a) Atributos:
+- i) Lista de idiomas que o professor ensina.
+- ii) Lista de estudantes do professor.
+* b) Métodos:
+- i) imprimirRelatorio:
 (1) Listar Idiomas que o professor sabe falar;
 (2) Listar Idiomas que o professor ensina;
 (3) Listar horários do professor;
 (4) Listar de estudantes do professor;
 (5) Listar aulas concluídas pelo professor;
 (6) Exibir saldo da carteira do professor.
-ii) aceitarPedidoDeAgendamento: Se o professor aceitar um pedido de
+- ii) aceitarPedidoDeAgendamento: Se o professor aceitar um pedido de
 agendamento, o horário do professor e do estudante devem ser marcados
 como não disponíveis. Usuários não podem ter duas aulas marcadas no
 mesmo horário.
