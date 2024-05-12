@@ -50,7 +50,8 @@ de dinheiro entre carteiras.
 
 9) Implementar a classe abstrata Usuario: Feito
 
-* a) Atributos:
+##### a) Atributos:
+
 - i) Nome do usuário com no maximo 50 caracteres.
 - ii) E-mail com no maximo 50 caracteres.
 - iii) País de origem com no máximo 10 caracteres.
@@ -60,17 +61,20 @@ de dinheiro entre carteiras.
 - vii) Objeto do tipo carteira, necessário para efetuar ou receber pagamentos das
 aulas.
 
-* b) Métodos:
+##### b) Métodos:
+
 - i) imprimirRelatorio: Método abstrato que deve ser implementado pelas classes
 que herdam a classe Usuario. O método deve imprimir um relatório completo
 sobre as atividades do usuário.
 - ii) Demais métodos que deseja implementar.
 
 10) Implemente a classe Estudante como uma subclasse de Usuario: Feito
-* a) Atributos:
+
+##### a) Atributos:
 - i) Lista de idiomas que o estudante deseja aprender.
 - ii) Lista de professores do estudante.
-* b) Métodos:
+
+##### b) Métodos:
 - i) imprimirRelatorio:
 (1) Listar Idiomas que o estudante sabe falar;
 (2) Listar Idiomas que o estudante deseja aprender;
@@ -91,18 +95,26 @@ transferido para a carteira do professor. Os 10% restantes do valor devem ser
 transferidos para a carteira do sistema. Caso a aula não tenha sido concluída,
 o dinheiro deve permanecer na carteira do estudante.
 
-11) Implementar a classe Professor como uma subclasse de Usuario: Feito
-* a) Atributos:
+11) Implementar a classe Professor como uma subclasse de Usuario: 
+
+##### a) Atributos:
 - i) Lista de idiomas que o professor ensina.
 - ii) Lista de estudantes do professor.
-* b) Métodos:
+
+##### b) Métodos:
 - i) imprimirRelatorio:
 (1) Listar Idiomas que o professor sabe falar;
+
 (2) Listar Idiomas que o professor ensina;
+
 (3) Listar horários do professor;
+
 (4) Listar de estudantes do professor;
+
 (5) Listar aulas concluídas pelo professor;
+
 (6) Exibir saldo da carteira do professor.
+
 - ii) aceitarPedidoDeAgendamento: Se o professor aceitar um pedido de
 agendamento, o horário do professor e do estudante devem ser marcados
 como não disponíveis. Usuários não podem ter duas aulas marcadas no
