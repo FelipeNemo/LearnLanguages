@@ -3,6 +3,7 @@
 from LearnLanguages.Users.erros import *
 import LearnLanguages.Users.constantes as const
 
+
 # 2) Todos os atributos das classes precisam ter seu acesso gerenciado por setters e getters.
 
 # 3) Caso existam valores inválidos, o programa deve lançar exceções, as quais devem ser
@@ -38,23 +39,75 @@ class Idioma():
       def __str__(self):
         return f"Idioma: {self.idioma}\nNível de proficiência: {self.nivel}"
 
-#Implementar a classe Horario para representar os horários em que o professor está disponível
+# 4) Implementar a classe Horario para representar os horários em que o professor está disponível
 #para lecionar as aulas de idiomas. O pacote datetime pode ser utilizado para representar a
 #data. Métodos são opcionais.
-class Horario:
-      pass
+class Horario():
+      def __init__(self, hora_inicio, hora_fim, dia_semana):
+        self.hora_inicio = hora_inicio
+        self.hora_fim = hora_fim
+        self.dia_semana = dia_semana
 
-#Implementar a classe TipoDeAula para identificar os diferentes tipos de aulas oferecidos pelos
+      @property    
+      def hora_inicio (self):
+            return self.__hora_inicio 
+      @hora_inicio.setter
+      def hora_inicio(self, hora_inicio):
+                        self.__hora_inicio = hora_inicio
+
+      @property    
+      def hora_fim (self):
+            return self.__hora_fim 
+      @hora_fim.setter
+      def hora_fim(self, hora_fim):
+            self.__hora_fim = hora_fim
+
+      @property    
+      def dia_semana(self):
+            return self.__dia_semana
+      @dia_semana.setter
+      def dia_semana(self, dia_semana):
+            self.__dia_semana = dia_semana
+
+      def __str__(self):
+            return f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}"
+
+
+
+
+# 5) Implementar a classe TipoDeAula para identificar os diferentes tipos de aulas oferecidos pelos
 #professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador.
-class TipoDeAula:
-      pass
 
-#Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
+class TipoDeAula(Idioma):
+      def __init__(self, idioma, preco, identificador):
+            super().__init__(idioma, "") # Chama o construtor da classe pai para definir o idioma(Chamar self e redundante e o código entra em recursão)
+            self.preco = preco           # "" foi usado pois a classe pai precisa de dois argumento
+            self.identificador = identificador
+
+      @property    
+      def preco (self):
+            return self.__preco 
+      @preco.setter
+      def preco(self, preco):
+            self.__preco = preco
+
+      @property    
+      def identificador (self):
+            return self.__identificador
+      @identificador.setter
+      def identificador(self, identificador):
+            self.__identificador = identificador
+
+      def __str__(self):
+            return "Tipo de aula: " + str(self.idioma)  + " " + str(self.preco) + " " + str(self.identificador)
+
+
+# 6) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
 #tipo da aula.
 class Aula:
       pass
 
-#Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
+# 7) Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
 #aulas aos professores. A classe Carteira deve permitir depositar, sacar, e fazer transferências
 #de dinheiro entre carteiras.
 class Carteira:
@@ -74,7 +127,7 @@ class Professor:
 class Sistema:
       pass
 
-#12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
+# 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
 #de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
 #também deve imprimir o relatório de cada usuário cadastrado no sistema.
 

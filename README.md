@@ -36,10 +36,10 @@ nível de proficiência (A1, A2, B1, B2, C1, C2, ou Nativo). Feito!
 
 5) Implementar a classe Horario para representar os horários em que o professor está disponível
 para lecionar as aulas de idiomas. O pacote datetime pode ser utilizado para representar a
-data. Métodos são opcionais.
+data. Métodos são opcionais. Feito!
 
 6) Implementar a classe TipoDeAula para identificar os diferentes tipos de aulas oferecidos pelos
-professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador.
+professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador. Feito!
 
 7) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
 tipo da aula.
@@ -68,7 +68,7 @@ que herdam a classe Usuario. O método deve imprimir um relatório completo
 sobre as atividades do usuário.
 - ii) Demais métodos que deseja implementar.
 
-10) Implemente a classe Estudante como uma subclasse de Usuario: Feito
+10) Implemente a classe Estudante como uma subclasse de Usuario: Feito!
 
 ##### a) Atributos:
 - i) Lista de idiomas que o estudante deseja aprender.
