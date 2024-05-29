@@ -1,3 +1,4 @@
+
 """Modulo que implementa todas as classes de erro!"""
 
 class ErroIdiomaInvalido(Exception):

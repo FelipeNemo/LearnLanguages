@@ -1,7 +1,7 @@
 """Classes para manipulação e gerenciamento de Users dentro de LearnLanguages"""
 # Imports
-from LearnLanguages.Users.erros import *
-import LearnLanguages.Users.constantes as const
+from .erros import *
+from . import constantes as const
 
 
 # 2) Todos os atributos das classes precisam ter seu acesso gerenciado por setters e getters.
@@ -12,34 +12,47 @@ import LearnLanguages.Users.constantes as const
 # 4) Implementar a classe Idioma, a qual armazena o nome do idioma (50 caracteres no máximo) e
 #nível de proficiência (A1, A2, B1, B2, C1, C2, ou Nativo).
 
-class Idioma():
-      def __init__(self, idioma, nivel):
-             self.__idioma = idioma
-             self.__nivel = nivel
+class Idioma:
+    def __init__(self, idioma, nivel):
+        self.idioma = idioma
+        self.nivel = nivel
 
-      @property    
-      def idioma(self):
-            return self.__idioma        
-      @idioma.setter
-      def idioma(self, idioma):
-            if len(idioma) > const.MAX_IDIOMA:
-                  raise ValueError(f"O nome do idioma não pode exceder à {const.MAX_IDIOMA} caracteres.")
-            self.__idioma = idioma
+    @property
+    def idioma(self):
+        return self.__idioma
 
-      @property
-      def nivel(self):
-            return self.__nivel
-      @nivel.setter
-      def nivel(self, nivel):
-            if nivel not in const.NIVEL_PORFICIENCIA:
-                   raise ValueError(f"Nível de proficiência inválido. Escolha entre {const.NIVEL_PROFICIENCIA}.")
-            self.__nivel = nivel
+    @idioma.setter
+    def idioma(self, n):
+        if isinstance(n, str) and len(n) <= const.MAX_IDIOMA:
+            self.__idioma = n
+        else:
+            raise ErroIdiomaInvalido(f"O nome do idioma não pode exceder {const.MAX_IDIOMA} caracteres.")
 
-      # Para visualizar os objetos criados em app.py
-      def __str__(self):
-        return f"Idioma: {self.idioma}\nNível de proficiência: {self.nivel}"
+    @idioma.deleter
+    def idioma(self):
+        del self.__idioma
 
-# 4) Implementar a classe Horario para representar os horários em que o professor está disponível
+    @property
+    def nivel(self):
+        return self.__nivel
+
+    @nivel.setter
+    def nivel(self, i):
+        if isinstance(i, str) and i in const.NIVEL_PROFICIENCIA:
+            self.__nivel = i
+        else:
+             raise ErroNivelInvalido(f"Nível de proficiência inválido. Escolha entre {const.NIVEL_PROFICIENCIA}.")
+
+    @nivel.deleter
+    def nivel(self):
+        del self.__nivel
+
+    # Print objeto Idioma(nome, nivel)
+    def __str__(self):
+        return f"{self.idioma} e tem nível {self.nivel}!"
+
+
+# 5) Implementar a classe Horario para representar os horários em que o professor está disponível
 #para lecionar as aulas de idiomas. O pacote datetime pode ser utilizado para representar a
 #data. Métodos são opcionais.
 class Horario():
@@ -75,14 +88,14 @@ class Horario():
 
 
 
-# 5) Implementar a classe TipoDeAula para identificar os diferentes tipos de aulas oferecidos pelos
+# 6) Implementar a classe TipoDeAula para identificar os diferentes tipos de aulas oferecidos pelos
 #professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador.
 
 class TipoDeAula(Idioma):
-      def __init__(self, idioma, preco, identificador):
-            super().__init__(idioma, "") # Chama o construtor da classe pai para definir o idioma(Chamar self e redundante e o código entra em recursão)
-            self.preco = preco           # "" foi usado pois a classe pai precisa de dois argumento
-            self.identificador = identificador
+      def __init__(self, idioma, nivel, preco, identificador):
+        super().__init__(idioma, nivel)  # Chama o construtor da classe pai para definir idioma e nivel
+        self.preco = preco
+        self.identificador = identificador
 
       @property    
       def preco (self):
@@ -99,19 +112,59 @@ class TipoDeAula(Idioma):
             self.__identificador = identificador
 
       def __str__(self):
-            return "Tipo de aula: " + str(self.idioma)  + " " + str(self.preco) + " " + str(self.identificador)
+           return f"Tipo de aula: {self.idioma}, preço {self.preco}, identificador {self.identificador}"
 
-
-# 6) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
+# 7) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
 #tipo da aula.
-class Aula:
-      pass
+# Herda de class TipoDeAula(idioma e obj TipoDeAula)
+# Herda de class Horario horario
+      
+class Aula(Horario, TipoDeAula):
+      def __init__(self, professor, estudante, idioma, nivel, preco, identificador, hora_inicio, hora_fim, dia_semana):
+           TipoDeAula.__init__(self, idioma, nivel, preco, identificador)
+           Horario.__init__(self, hora_inicio, hora_fim, dia_semana)
+           self.professor = professor
+           self.estudante = estudante
 
-# 7) Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
+      @property
+      def professor (self):
+            return self.__professor
+      @professor.setter
+      def professor(self, professor):
+            self.__professor = professor
+
+      @property
+      def estudante(self):
+            return self.__estudante
+      @estudante.setter
+      def estudante(self, estudante):
+            self.__estudante = estudante
+
+      def __str__(self):
+           return (f"Aula de {self.idioma} com {self.professor}, estudante: {self.estudante}, "
+                   f"preço: {self.preco}, identificador: {self.identificador}, "
+                   f"horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}")
+           
+            
+
+
+# 8) Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
 #aulas aos professores. A classe Carteira deve permitir depositar, sacar, e fazer transferências
 #de dinheiro entre carteiras.
-class Carteira:
-      pass
+      
+class Carteira(Aula):
+     def __init__(self,depositar,sacar,transferir):
+          super().__init__(Aula)
+          self.depositar = depositar
+          self.sacar = sacar
+          self.sacar = transferir
+
+          #def transferir(self):
+               
+
+
+
+     
 
 
 # 9) Implementar a classe abstrata Usuario:

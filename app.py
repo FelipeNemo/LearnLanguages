@@ -1,25 +1,36 @@
-import LearnLanguages.Users as u
+import LearnLanguages.Users as l
 import datetime
 
-T1 = u.TipoDeAula("Ingles",72,521637)
-print(T1)
+print("CADASTRO ESCOLA DE INGLES\n")
 
-
-H1 = u.Horario(datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
-print(H1)
 
 
 try:
-    idioma = input("Digite o idioma:")
-    nivel = input("Digite seu nível de proficiencia:")
+    # input classe Idioma
+    #idioma = input("Digite o idioma:")
+    #nivel = input("Digite seu nível de proficiencia:")
 
-    P1 = u.Idioma(idioma, nivel)
+    # Criar uma instância da classe Idioma com os valores fornecidos pelo usuário.
+    #P1 = l.Idioma(idioma, nivel)
+    P1 = l.Idioma("Inglês", "C1")
     print(P1)
-    
-    
-except u.ErroIdiomaInvalido as e:
-    print(f"Erro: {e}")
-except u.ErroNivelInvalido as e:
-    print(f"Erro: {e}")
-except ValueError as e: # especificar o tipo de erro em erros.py para ele encerrar o programa ao receber o primeiro input
-    print(f"Erro de entrada: {e}")
+
+    # Criar uma instância da classe Horario.
+    H1 = l.Horario(datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
+    print(H1)
+
+    # Criar uma instância da classe TipoDeAula.
+    tipo_aula = l.TipoDeAula("Espanhol", "C1", 100, "AULA159")
+    print(tipo_aula)  # Saída: Tipo de aula: Espanhol, preço 100, identificador AULA159
+
+    # Criar uma instância da classe Aula.
+    A1 = l.Aula("Prof Bruce Lee", "Felipe", "Inglês", "B2", 72.15, "521637-5", datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
+    print(A1)
+
+except l.ErroIdiomaInvalido as e:
+    print(e)   
+
+except l.ErroNivelInvalido as e:
+     print(e)
+
+

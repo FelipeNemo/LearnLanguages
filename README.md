@@ -42,7 +42,7 @@ data. Métodos são opcionais. Feito!
 professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador. Feito!
 
 7) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
-tipo da aula.
+tipo da aula. Feito!
 
 8) Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
 aulas aos professores. A classe Carteira deve permitir depositar, sacar, e fazer transferências
