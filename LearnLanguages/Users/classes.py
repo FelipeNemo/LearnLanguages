@@ -1,8 +1,177 @@
 """Classes para manipulação e gerenciamento de Users dentro de LearnLanguages"""
-# Imports
+
+# Imports.
 from .erros import *
 from . import constantes as const
 
+# 9) Implementar a classe abstrata Usuario: -----------------------------------------------------------------------------------
+from abc import ABC, abstractmethod
+
+class Usuario(ABC):
+    
+# a) Atributos:
+    
+    def __init__(self, nome, email, paisOrigem, paisAtual, idiomas, horarios, carteira):
+        self.__nome = nome
+        self.__email = email
+        self.__paisOrigem = paisOrigem
+        self.__paisAtual = paisAtual
+        self.__idiomas = idiomas
+        self.__horarios = horarios
+        self.__carteira = carteira
+
+
+    @property   # Máximo 50 caracteres.
+    def nome(self):
+        return self.__nome
+    
+    @nome.setter  
+    def nome(self, nome):
+        self.__nome = nome
+
+
+    @property  # Máximo 50 caracteres.
+    def email(self):
+        return self.__email
+    
+    @email.setter  
+    def email(self, email):
+        self.__email = email
+
+
+    @property  # Máximo 10 caracteres.
+    def paisOrigem(self):
+        return self.__paisOrigem
+    
+    @paisOrigem.setter 
+    def paisOrigem(self, paisOrigem):
+        self.paisOrigem = paisOrigem
+
+
+    @property  # Máximo 10 caracteres.
+    def paisAtual(self):
+        return self.__paisAtual
+    
+    @paisAtual.setter 
+    def paisAtual(self, paisAtual):
+        self.paisAtual = paisAtual
+
+
+    @property   # Uma Lista [] de objetos idioma que o usuário sabe falar(Já implementado na classe Idioma).
+    def idiomas(self):
+        return self.__idiomas
+
+    @idiomas.setter 
+    def idiomas(self, idiomas):
+        self.__idiomas = idiomas
+
+    
+    @property  # Uma Lista [] de objetos horario que o usuário sabe falar(Já implementado na classe Horario).
+    def horarios(self):
+         return self.__horarios
+    
+    @horarios.setter 
+    def carteira(self, horarios):
+        self.__horarios = horarios
+
+
+    @property  # Uma Lista [] de objetos carteira que o usuário sabe falar(Já implementado na classe Carteira).
+    def carteira(self):
+         return self.__carteira
+
+    @carteira.setter 
+    def carteira(self, carteira):
+        self.__carteira = carteira
+
+# b) Métodos: 
+        
+# i) imprimirRelatorio: Método abstrato que deve ser implementado pelas classes que herdam a classe Usuario.
+# imprimir um relatório completo sobre as atividades do usuário.
+        
+    @abstractmethod
+    def imprimir_relatorio(self):
+         pass
+       
+# 10) Implemente a classe Estudante como uma subclasse de Usuario:
+
+class Estudante(Usuario):
+     
+# a) Atributos:
+     
+     def __init__(self, idiomas, professores):
+          self.idiomas = idiomas
+          self.professores = professores
+
+# b) Métodos:
+
+#(1) Listar Idiomas que o estudante sabe falar;
+#(2) Listar Idiomas que o estudante deseja aprender;
+#(3) Listar horários do estudante;
+#(4) Listar professores do estudante;
+#(5) Listar aulas concluídas pelo estudante;
+#(6) Exibir dados do professor favorito do estudante (com qual professor o estudante teve mais aulas, e quantas foram);
+#(7) Exibir idioma favorito do estudante (com qual idioma o estudante tevemais aulas, e quantas foram);
+#(8) Exibir saldo da carteira do estudante.
+          
+# i) Lista de idiomas que o estudante deseja aprender.
+    
+     def idiomas_aprender(self):
+          pass
+          
+# ii) Lista de professores do estudante ja teve.
+     
+     def historico_professores(self):
+          pass
+
+      
+# 11) Implementar a classe Professor como uma subclasse de Usuario:
+class Professor(Usuario):
+
+     
+# a) Atributos:
+     
+     def __init__(self, idiomas, estudantes):
+          self.idiomas = idiomas
+          self.estudantes = estudantes
+
+# b) Métodos:
+          
+# i) imprimirRelatorio do professor:
+     def idiomas_professor(self):
+          pass
+     
+#(1) Listar Idiomas que o professor sabe falar;
+#(2) Listar Idiomas que o professor ensina;
+#(3) Listar horários do professor;
+#(4) Listar de estudantes do professor;
+#(5) Listar aulas concluídas pelo professor;
+#(6) Exibir saldo da carteira do professor.
+          
+# ii) aceitarPedidoDeAgendamento do professor:
+     def Agendamento_Professor():
+          pass
+# (1) Se o professor aceitar um pedido de agendamento.     
+# (2) Horário do professor e do estudante devem ser marcados como não disponíveis.    
+# (3) Usuários não podem ter duas aulas marcadas no mesmo horário.
+     
+# 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
+#de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
+#também deve imprimir o relatório de cada usuário cadastrado no sistema.
+     
+# OBS: Classe Sistema faz registra operações de marcação de aulas, saidas e entradas na carteira do aluno e do professor e sistema.
+
+
+class Sistema(Usuario):
+      pass
+
+# (1) Informar quantidade de estudantes e professores cadastrados
+# (2) Atribuir os 10% das aulas na carteira do sistema.
+# (3) Imprimir o relatório de cada usuário(professores e alunos) cadastrado no sistema
+
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------
 
 # 2) Todos os atributos das classes precisam ter seu acesso gerenciado por setters e getters.
 
@@ -152,36 +321,44 @@ class Aula(Horario, TipoDeAula):
 #aulas aos professores. A classe Carteira deve permitir depositar, sacar, e fazer transferências
 #de dinheiro entre carteiras.
       
-class Carteira(Aula):
-     def __init__(self,depositar,sacar,transferir):
-          super().__init__(Aula)
-          self.depositar = depositar
-          self.sacar = sacar
-          self.sacar = transferir
+class Carteira():
+     
+      def __init__(self,saldo):
+          self.__saldo = saldo
 
-          #def transferir(self):
+      @property
+      def saldo(self):
+          return self.__saldo
+      
+      @saldo.setter
+      def saldo(self, valor):
+            if valor > 0:
+                 self.__saldo += valor
+            else:
+                 raise ValueError("Valor precisa ser maior que 0 !") # Criar em erros.py
+
+      def sacar(self, valor):
+        if 0 < valor <= self.__saldo:
+            self.__saldo -= valor
+        else:
+            raise ValueError("Esse valor excede o saldo disponível para saque !")
+        
+ # transferencias são feitas apenas na instancia Carteira
+ # pra transferir:
+ # (1)  Sacamos valor>0 da conta que transfere  
+ # (2)  Depositamos valor na conta destino
+        
+      def transferir(self, valor, conta_destino):
+        if not isinstance(conta_destino, Carteira): 
+            raise TypeError("A transferência deve ser feita para outra instância de Carteira.")
+        if 0 < valor <= self.__saldo:
+            self.sacar(valor)
+            conta_destino.depositar(valor)   
+        else:
+            raise ValueError("A quantia para transferência deve ser positiva e menor ou igual ao saldo disponível.") # Criar em erros.py
+          
                
 
 
-
-     
-
-
-# 9) Implementar a classe abstrata Usuario:
-# inicio do código em funções.py
-       
-# 10) Implemente a classe Estudante como uma subclasse de Usuario:
-class Estudante:
-      pass
-# 11) Implementar a classe Professor como uma subclasse de Usuario:
-class Professor:
-      pass
-# OBS: Classe Sistema faz as operações de marcação de aulas, saidas e entradas na carteira do aluno e do professor ...
-class Sistema:
-      pass
-
-# 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
-#de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
-#também deve imprimir o relatório de cada usuário cadastrado no sistema.
 
 

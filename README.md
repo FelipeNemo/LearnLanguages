@@ -50,7 +50,7 @@ de dinheiro entre carteiras.
 
 9) Implementar a classe abstrata Usuario: Feito
 
-##### a) Atributos:
+##### a) Atributos: 50% feito(tratar erros e por objetos das subclasses nos atributos lista)
 
 - i) Nome do usuário com no maximo 50 caracteres.
 - ii) E-mail com no maximo 50 caracteres.

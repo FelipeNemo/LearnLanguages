@@ -3,7 +3,7 @@ import datetime
 
 print("CADASTRO ESCOLA DE INGLES\n")
 
-
+# A manipula;'ao do arquivo de entrada ser[a feita pelo app.py usando o modulo os
 
 try:
     # input classe Idioma
@@ -26,6 +26,16 @@ try:
     # Criar uma instância da classe Aula.
     A1 = l.Aula("Prof Bruce Lee", "Felipe", "Inglês", "B2", 72.15, "521637-5", datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
     print(A1)
+
+    # Criar uma instância da classe Carteira
+    CE = l.Carteira(200)
+    CP = l.Carteira(200)
+  
+
+    print("Saldo inicial Estudante : ",  CE.saldo)
+    print("Saldo inicial  Professor : ",  CP.saldo)
+
+    
 
 except l.ErroIdiomaInvalido as e:
     print(e)   
