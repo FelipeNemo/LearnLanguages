@@ -46,20 +46,20 @@ tipo da aula. Feito!
 
 8) Implementar a classe Carteira, a qual serve para permitir ao estudante pagar o preço das
 aulas aos professores. A classe Carteira deve permitir depositar, sacar, e fazer transferências
-de dinheiro entre carteiras.
+de dinheiro entre carteiras. Feito!
 
-9) Implementar a classe abstrata Usuario: Feito
+9) Implementar a classe abstrata Usuario: Feito!
 
 ##### a) Atributos: 50% feito(tratar erros e por objetos das subclasses nos atributos lista)
 
-- i) Nome do usuário com no maximo 50 caracteres.
-- ii) E-mail com no maximo 50 caracteres.
-- iii) País de origem com no máximo 10 caracteres.
-- iv) País atual com no máximo 10 caracteres.
-- v) Lista de idiomas que o usuário sabe falar.
-- vi) Lista de horários do usuário.
+- i) Nome do usuário com no maximo 50 caracteres. Feito!
+- ii) E-mail com no maximo 50 caracteres. Feito!
+- iii) País de origem com no máximo 10 caracteres. Feito!
+- iv) País atual com no máximo 10 caracteres. Feito!
+- v) Lista de idiomas que o usuário sabe falar. 
+- vi) Lista de horários do usuário. 
 - vii) Objeto do tipo carteira, necessário para efetuar ou receber pagamentos das
-aulas.
+aulas. 
 
 ##### b) Métodos:
 

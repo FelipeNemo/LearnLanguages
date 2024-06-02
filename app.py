@@ -45,13 +45,41 @@ try:
     CE.transferir(30, CP)
     print("Saldo depois da tranferencia da carteira estudante: ",  CE.saldo)
     print("Saldo depois de estudante tranferir para carteira professor : ",  CP.saldo)
-    
-    
 
+#Class Usuario    
+except l.ErroNomeInvalido as e:
+    print(e) 
+
+except l.ErroEmailInvalido as e:
+    print(e) 
+
+except l.ErroPaisDeOrigemInvalido as e:
+    print(e) 
+
+except l.ErroPaisAtualInvalido as e:
+    print(e) 
+
+#Class Idioma
 except l.ErroIdiomaInvalido as e:
     print(e)   
 
 except l.ErroNivelInvalido as e:
+     print(e)
+
+#Class Carteira 
+except l.ErroSaldoInvalido as e:
+     print(e)
+
+except l.ErroDepositoInvalido as e:
+     print(e)
+
+except l.ErroSaqueIndisponivel as e:
+     print(e)
+
+except l.ErroContaInvalida as e:
+     print(e)
+
+except l.ErroSaldoInsuficiente as e:
      print(e)
 
 

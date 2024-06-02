@@ -5,11 +5,13 @@ from .erros import *
 from . import constantes as const
 
 # 9) Implementar a classe abstrata Usuario: -----------------------------------------------------------------------------------
-from abc import ABC, abstractmethod # Classe de base abstrata
+from abc import ABC, abstractmethod # Classe de base abstrata.
 
 class Usuario(ABC):
     
 # a) Atributos:
+    
+# Não precisamos verificar se os atributos de usuários são instâncias de usuário pois classes de base abstrata não criam objetos.
     
     def __init__(self, nome, email, paisOrigem, paisAtual, idiomas, horarios, carteira):
         self.__nome = nome
@@ -19,16 +21,17 @@ class Usuario(ABC):
         self.__idiomas = idiomas
         self.__horarios = horarios
         self.__carteira = carteira
-
-
+        
     @property   # Máximo 50 caracteres.
     def nome(self):
         return self.__nome
     
     @nome.setter  
     def nome(self, nome):
-        self.__nome = nome
-
+        if len(nome) >= const.MAX_NOME:
+            raise ErroNomeInvalido(f"O nome deve ter no máximo {const.MAX_NOME} caracteres")
+        else:
+             self.__nome = nome
 
     @property  # Máximo 50 caracteres.
     def email(self):
@@ -36,7 +39,11 @@ class Usuario(ABC):
     
     @email.setter  
     def email(self, email):
-        self.__email = email
+        if len(email) >= const.MAX_EMAIL:
+             raise ErroEmailInvalido(f"O e-mail deve ter no máximo {const.MAX_EMAIL} caracteres")
+        else:
+             self.__email = email
+        
 
 
     @property  # Máximo 10 caracteres.
@@ -45,7 +52,10 @@ class Usuario(ABC):
     
     @paisOrigem.setter 
     def paisOrigem(self, paisOrigem):
-        self.paisOrigem = paisOrigem
+        if len(paisOrigem) >= const.MAX_PAISORIGEM:
+             raise ErroPaisDeOrigemInvalido(f"O país de origem deve ter no máximo {const.MAX_PAISORIGEM} caracteres")
+        else:
+             self.paisOrigem = paisOrigem
 
 
     @property  # Máximo 10 caracteres.
@@ -54,7 +64,10 @@ class Usuario(ABC):
     
     @paisAtual.setter 
     def paisAtual(self, paisAtual):
-        self.paisAtual = paisAtual
+        if len(paisAtual) >= const.MAX_PAISATUAL:
+             raise ErroPaisAtualInvalido(f"O país de atual deve ter no máximo {const.MAX_PAISATUAL} caracteres")
+        else:
+             self.paisAtual = paisAtual
 
 
     @property   # Uma Lista [] de objetos idioma que o usuário sabe falar(Já implementado na classe Idioma).
@@ -66,7 +79,7 @@ class Usuario(ABC):
         self.__idiomas = idiomas
 
     
-    @property  # Uma Lista [] de objetos horario que o usuário sabe falar(Já implementado na classe Horario).
+    @property  # Uma Lista [] de objetos horario que mostra os horários do usuário (Já implementado na classe Horario).
     def horarios(self):
          return self.__horarios
     
@@ -332,19 +345,22 @@ class Carteira():
       
       @saldo.setter     
       def saldo(self, saldo):
-            self.__saldo = saldo
+            if saldo >= 0:
+                 self.__saldo = saldo
+            else:
+                 raise ErroSaldoInvalido("Saldo deve ser positivo ou 0 !")
       
       def depositar(self, valor):
             if valor > 0:
                  self.__saldo += valor
             else:
-                 raise ValueError("Valor precisa ser maior que 0 !") # Criar em erros.py
+                 raise ErroDepositoInvalido("Só é permitido depositar um valor menor ou igual a 0 !")
 
       def sacar(self, valor):
-        if 0 < valor <= self.__saldo:
+        if 0 < valor <= self.__saldo: # Especificação de erro.
             self.__saldo -= valor
         else:
-            raise ValueError("Esse valor excede o saldo disponível para saque !")
+            raise ErroSaqueIndisponivel("Esse valor excede o saldo disponível para saque !")
         
  # transferencias são feitas apenas na instancia Carteira
  # pra transferir:
@@ -353,12 +369,12 @@ class Carteira():
         
       def transferir(self, valor, conta_destino):
         if not isinstance(conta_destino, Carteira): 
-            raise TypeError("A transferência deve ser feita para outra instância de Carteira.")
-        if 0 < valor <= self.__saldo:
+            raise ErroContaInvalida("Essa carteira não existente no sistema !")
+        if 0 < valor <= self.__saldo: # Especificação de erro.
             self.sacar(valor)
             conta_destino.depositar(valor)   
         else:
-            raise ValueError("A quantia para transferência deve ser positiva e menor ou igual ao saldo disponível.") # Criar em erros.py
+            raise ErroSaldoInsuficiente("Transferências só podem ser feitas com valores menores ou iguaisque o saldo total disponível !") 
           
                
 
