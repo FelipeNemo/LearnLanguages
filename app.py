@@ -30,11 +30,22 @@ try:
     # Criar uma instância da classe Carteira
     CE = l.Carteira(200)
     CP = l.Carteira(200)
-  
 
     print("Saldo inicial Estudante : ",  CE.saldo)
     print("Saldo inicial  Professor : ",  CP.saldo)
 
+
+    CE.depositar(200)
+    print("Saldo depois do deposito na carteira estudante : ",  CE.saldo)
+    
+
+    CE.sacar(50) # fica 350
+    print("Saldo depois do saque na carteira estudante : ",  CE.saldo)
+    
+    CE.transferir(30, CP)
+    print("Saldo depois da tranferencia da carteira estudante: ",  CE.saldo)
+    print("Saldo depois de estudante tranferir para carteira professor : ",  CP.saldo)
+    
     
 
 except l.ErroIdiomaInvalido as e:

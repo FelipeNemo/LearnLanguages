@@ -5,7 +5,7 @@ from .erros import *
 from . import constantes as const
 
 # 9) Implementar a classe abstrata Usuario: -----------------------------------------------------------------------------------
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod # Classe de base abstrata
 
 class Usuario(ABC):
     
@@ -218,7 +218,7 @@ class Idioma:
 
     # Print objeto Idioma(nome, nivel)
     def __str__(self):
-        return f"{self.idioma} e tem nível {self.nivel}!"
+        return f"Idioma: {self.idioma} - Nível: {self.nivel}!"
 
 
 # 5) Implementar a classe Horario para representar os horários em que o professor está disponível
@@ -281,7 +281,7 @@ class TipoDeAula(Idioma):
             self.__identificador = identificador
 
       def __str__(self):
-           return f"Tipo de aula: {self.idioma}, preço {self.preco}, identificador {self.identificador}"
+           return f"Tipo de aula: {self.idioma} - Preço: {self.preco} - ID {self.identificador}"
 
 # 7) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
 #tipo da aula.
@@ -310,9 +310,9 @@ class Aula(Horario, TipoDeAula):
             self.__estudante = estudante
 
       def __str__(self):
-           return (f"Aula de {self.idioma} com {self.professor}, estudante: {self.estudante}, "
-                   f"preço: {self.preco}, identificador: {self.identificador}, "
-                   f"horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}")
+           return (f"Aula: {self.idioma} - Professor: {self.professor} - Estudante: {self.estudante}, "
+                   f"Preço: {self.preco} - ID : {self.identificador}, "
+                   f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}")
            
             
 
@@ -330,8 +330,11 @@ class Carteira():
       def saldo(self):
           return self.__saldo
       
-      @saldo.setter
-      def saldo(self, valor):
+      @saldo.setter     
+      def saldo(self, saldo):
+            self.__saldo = saldo
+      
+      def depositar(self, valor):
             if valor > 0:
                  self.__saldo += valor
             else:
