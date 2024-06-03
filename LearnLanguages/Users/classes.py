@@ -5,96 +5,106 @@ from .erros import *
 from . import constantes as const
 
 # 9) Implementar a classe abstrata Usuario: -----------------------------------------------------------------------------------
-from abc import ABC, abstractmethod # Classe de base abstrata.
+from abc import ABCMeta, abstractmethod # Classe de base abstrata.
 
-class Usuario(ABC):
+class Usuario(metaclass=ABCMeta):
     
 # a) Atributos:
     
 # Não precisamos verificar se os atributos de usuários são instâncias de usuário pois classes de base abstrata não criam objetos.
     
-    def __init__(self, nome, email, paisOrigem, paisAtual, idiomas, horarios, carteira):
-        self.__nome = nome
-        self.__email = email
-        self.__paisOrigem = paisOrigem
-        self.__paisAtual = paisAtual
-        self.__idiomas = idiomas
-        self.__horarios = horarios
-        self.__carteira = carteira
+    def __init__(self, nome, email, paisOrigem, paisAtual, carteira, idiomas =[], horarios= []):
+        self.nome = nome
+        self.email = email
+        self.paisOrigem = paisOrigem
+        self.paisAtual = paisAtual
+        self.idiomas = idiomas
+        self.horarios = horarios
+        self.carteira = carteira
         
     @property   # Máximo 50 caracteres.
     def nome(self):
-        return self.__nome
+        return self._nome
     
     @nome.setter  
     def nome(self, nome):
-        if len(nome) >= const.MAX_NOME:
+        if len(nome) > const.MAX_NOME:
             raise ErroNomeInvalido(f"O nome deve ter no máximo {const.MAX_NOME} caracteres")
         else:
-             self.__nome = nome
+             self._nome = nome
 
     @property  # Máximo 50 caracteres.
     def email(self):
-        return self.__email
+        return self._email
     
     @email.setter  
     def email(self, email):
-        if len(email) >= const.MAX_EMAIL:
+        if len(email) > const.MAX_EMAIL:
              raise ErroEmailInvalido(f"O e-mail deve ter no máximo {const.MAX_EMAIL} caracteres")
         else:
-             self.__email = email
+             self._email = email
         
 
 
     @property  # Máximo 10 caracteres.
     def paisOrigem(self):
-        return self.__paisOrigem
+        return self._paisOrigem
     
     @paisOrigem.setter 
     def paisOrigem(self, paisOrigem):
-        if len(paisOrigem) >= const.MAX_PAISORIGEM:
+        if len(paisOrigem) > const.MAX_PAISORIGEM:
              raise ErroPaisDeOrigemInvalido(f"O país de origem deve ter no máximo {const.MAX_PAISORIGEM} caracteres")
         else:
-             self.paisOrigem = paisOrigem
+             self._paisOrigem = paisOrigem
 
 
     @property  # Máximo 10 caracteres.
     def paisAtual(self):
-        return self.__paisAtual
+        return self._paisAtual
     
     @paisAtual.setter 
     def paisAtual(self, paisAtual):
-        if len(paisAtual) >= const.MAX_PAISATUAL:
+        if len(paisAtual) > const.MAX_PAISATUAL:
              raise ErroPaisAtualInvalido(f"O país de atual deve ter no máximo {const.MAX_PAISATUAL} caracteres")
         else:
-             self.paisAtual = paisAtual
+             self._paisAtual = paisAtual
 
 
-    @property   # Uma Lista [] de objetos idioma que o usuário sabe falar(Já implementado na classe Idioma).
+    @property
     def idiomas(self):
-        return self.__idiomas
+        return self._idiomas.copy()
 
-    @idiomas.setter 
-    def idiomas(self, idiomas):
-        self.__idiomas = idiomas
+    @idiomas.setter
+    def idiomas(self, i_list):
+        if all(isinstance(i, Idioma) for i in i_list):
+            self._idiomas = i_list
+        else:
+            raise ErroIdiomaInvalido(f"O nome do idioma não pode exceder {const.MAX_IDIOMA} caracteres.")
 
-    
-    @property  # Uma Lista [] de objetos horario que mostra os horários do usuário (Já implementado na classe Horario).
+    def adicionar_idioma(self, idioma):
+        if isinstance(idioma, Idioma):
+            self._idiomas.append(idioma)
+        else:
+            raise ErroIdiomaInvalido(f"O nome do idioma não pode exceder {const.MAX_IDIOMA} caracteres.")
+
+        
+    @property  # Uma Lista [] de objetos horario que mostra os horários do usuário.
     def horarios(self):
-         return self.__horarios
+         return self._horarios
     
-    @horarios.setter 
-    def carteira(self, horarios):
-        self.__horarios = horarios
+    @horarios.setter
+    def horarios(self, h_list):
+        if all(isinstance(h, Horario) for h in h_list):
+            self._horarios = h_list
 
 
-    @property  # Uma Lista [] de objetos carteira que o usuário sabe falar(Já implementado na classe Carteira).
+    @property  # Objeto do tipo carteira necessário para efetuar ou receber pagamentos das aulas.
     def carteira(self):
-         return self.__carteira
+         return self._carteira
 
     @carteira.setter 
     def carteira(self, carteira):
-        self.__carteira = carteira
+        self._carteira = carteira
 
 # b) Métodos: 
         
@@ -102,67 +112,175 @@ class Usuario(ABC):
 # imprimir um relatório completo sobre as atividades do usuário.
         
     @abstractmethod
-    def imprimir_relatorio(self):
-         pass
+    def imprimirRelatorio(self):
+        """ Método abstrato que deve ser implementado nas subclasses """
+        pass
        
 # 10) Implemente a classe Estudante como uma subclasse de Usuario:
-
-class Estudante(Usuario):
      
 # a) Atributos:
-     
-     def __init__(self, idiomas, professores):
-          self.idiomas = idiomas
-          self.professores = professores
+    
+class Estudante(Usuario):
+    def __init__(self,nome, email, paisOrigem, paisAtual,carteira, idiomas_aprender=None, historico_professores=None):
+        super().__init__(nome, email, paisOrigem, paisAtual,carteira)
+        self.idiomas_aprender = idiomas_aprender if idiomas_aprender is not None else []
+        self.historico_professores = historico_professores if historico_professores is not None else []
+        self.aulas_concluidas = [] # add: confirmação de aulas concluidas
 
 # b) Métodos:
+        
+# i) imprimirRelatorio:
+    def imprimirRelatorio(self):
+        relatorio = {
+            "Idiomas que sabe falar": self.idiomas_ja_sabe_falar(),
+            "Idiomas que deseja aprender": self.idiomas_deseja_aprender(),
+            "Horários do estudante": self.listar_horarios(),
+            "Professores do estudante": self.lista_professores(),
+            "Aulas concluídas": self.aulas_concluidas,
+            "Professor favorito": self.exibir_professor_favorito(),
+            "Idioma favorito": self.exibir_idioma_favorito(),
+            "Saldo da carteira": self.saldo_carteira()
+        }
+        for chave, valor in relatorio.items():
+            print(f"{chave}: {valor}")
+            
 
 #(1) Listar Idiomas que o estudante sabe falar;
-#(2) Listar Idiomas que o estudante deseja aprender;
-#(3) Listar horários do estudante;
-#(4) Listar professores do estudante;
-#(5) Listar aulas concluídas pelo estudante;
-#(6) Exibir dados do professor favorito do estudante (com qual professor o estudante teve mais aulas, e quantas foram);
-#(7) Exibir idioma favorito do estudante (com qual idioma o estudante tevemais aulas, e quantas foram);
-#(8) Exibir saldo da carteira do estudante.
-          
-# i) Lista de idiomas que o estudante deseja aprender.
+    def idiomas_ja_sabe_falar(self):
+         return self._idiomas
     
-     def idiomas_aprender(self):
-          pass
+#(2) Listar Idiomas que o estudante deseja aprender;
+    def idiomas_deseja_aprender(self):
+        return self.idiomas_aprender
+    
+#(3) Listar horários do estudante;
+    def listar_horarios(self):
+        return self.horarios
+    
+#(4) Listar professores do estudante;
+    def lista_professores(self):
+        return self.historico_professores
+    
+#(5) Listar aulas concluídas pelo estudante;
+    def aulas_concluidas(self):
+        return self.aulas_concluidas
+    
+#(6) Exibir dados do professor favorito do estudante (com qual professor o estudante teve mais aulas, e quantas foram);
+    def exibir_professor_favorito(self):
+        if not self.historico_professores:
+             return "Não há histórico de professores até o momento"
+        
+        professor_favorito = max(set(self.historico_professores), key=self.historico_professores.count)
+        qtd_aulas_professor_favorito = self.historico_professores.count(professor_favorito)
+        return f"Professor favorito: {professor_favorito}, com {qtd_aulas_professor_favorito} aulas."
+    
+#(7) Exibir idioma favorito do estudante (com qual idioma o estudante tevemais aulas, e quantas foram);
+    def exibir_idioma_favorito(self):
+        if not self.aulas_concluidas:
+            return "Não há aulas concluídas ainda."
+        
+        idiomas_concluidos = [aula.idioma for aula in self.aulas_concluidas]
+        idioma_favorito = max(set(idiomas_concluidos), key=idiomas_concluidos.count)
+        qtd_aulas_idioma_favorito = idiomas_concluidos.count(idioma_favorito)
+        return f"Idioma favorito: {idioma_favorito}, com {qtd_aulas_idioma_favorito} aulas."
+    
+#(8) Exibir saldo da carteira do estudante.
+    def saldo_carteira(self):
+        return self.carteira.saldo
           
-# ii) Lista de professores do estudante ja teve.
+# i) agendarAula:
+    
+    def agendar_aula(self, aula):
+        self.horarios.append(aula.horario)
+        self.idiomas.append(aula.idioma)
+        
+          
+# iii) confirmarQueAulaFoiConcluida:
      
-     def historico_professores(self):
-          pass
-
+    def confirmar_aula_concluida(self, aula):
+         if aula.horario in self.horarios:
+              self.horarios.remove(aula.horario)
+              self.aulas_concluidas.append(aula)
       
 # 11) Implementar a classe Professor como uma subclasse de Usuario:
-class Professor(Usuario):
+
 
      
 # a) Atributos:
      
-     def __init__(self, idiomas, estudantes):
-          self.idiomas = idiomas
-          self.estudantes = estudantes
+class Professor(Usuario):
+    def __init__(self,nome, email, paisOrigem, paisAtual,carteira, idiomas_ensina=None, historico_estudantes=None):
+        super().__init__(nome, email, paisOrigem, paisAtual,carteira)
+        self.idiomas_ensina =  idiomas_ensina if idiomas_ensina is not None else []
+        self.historico_estudantes = historico_estudantes if historico_estudantes is not None else []
+        self.aulas_concluidas = [] 
 
 # b) Métodos:
           
 # i) imprimirRelatorio do professor:
-     def idiomas_professor(self):
-          pass
+        
+        # i) imprimirRelatorio:
+    def imprimirRelatorio(self):
+        relatorio = {
+            "Idiomas que o professor sabe falar": self.idiomas_ja_sabe_falar(),
+            "Idiomas que o professor ensina": self.idiomas_deseja_ensinar(),
+            "Horários do professor": self.listar_horarios(),
+            "Estudantes do professor": self.lista_estudantes(),
+            "Aulas concluídas": self.aulas_concluidas,
+            "Saldo da carteira": self.saldo_carteira()
+        }
+        for chave, valor in relatorio.items():
+            print(f"{chave}: {valor}")
      
 #(1) Listar Idiomas que o professor sabe falar;
+    def idiomas_ja_sabe_falar(self):
+         return self._idiomas
+    
 #(2) Listar Idiomas que o professor ensina;
+    def idiomas_deseja_ensinar(self):
+        return self.idiomas_ensina
+    
 #(3) Listar horários do professor;
+    def listar_horarios(self):
+        return self.horarios
+    
 #(4) Listar de estudantes do professor;
+    def lista_estudantes(self):
+        return self.historico_estudantes
+    
 #(5) Listar aulas concluídas pelo professor;
+    def aulas_concluidas(self):
+        return self.aulas_concluidas
+    
 #(6) Exibir saldo da carteira do professor.
+    def saldo_carteira(self):
+        return self.carteira.saldo
           
 # ii) aceitarPedidoDeAgendamento do professor:
-     def Agendamento_Professor():
-          pass
+    def Agendamento_Professor(self, aula): # Verificar se o horário do professor está disponível
+        if aula.hora_inicio in self.horarios or aula.hora_fim in self.horarios: 
+             return "Horário indisponível para o professor."  
+    
+    
+        for estudante in self.historico_estudantes: # Verificar se o horário do estudante está disponível
+            if aula.hora_inicio in estudante.horarios or aula.hora_fim in estudante.horarios:
+                 return f"Horário indisponível para o estudante {estudante.nome}." 
+        self.aulas_concluidas.append(aula)# Adicionar a aula à lista de aulas do professor e do estudante correspondente
+        for estudante in self.historico_estudantes:
+          if estudante.nome == aula.estudante:
+            estudante.aulas_concluidas.append(aula) 
+            break
+    
+    # Atualizar os horários do professor e do estudante
+        self.horarios.append(aula.hora_inicio)
+        self.horarios.append(aula.hora_fim)
+        for estudante in self.historico_estudantes:
+            if estudante.nome == aula.estudante:
+                 estudante.horarios.append(aula.hora_inicio)
+                 estudante.horarios.append(aula.hora_fim)
+                 break
+    
+        return "Aula agendada com sucesso."  
 # (1) Se o professor aceitar um pedido de agendamento.     
 # (2) Horário do professor e do estudante devem ser marcados como não disponíveis.    
 # (3) Usuários não podem ter duas aulas marcadas no mesmo horário.
@@ -305,6 +423,7 @@ class Aula(Horario, TipoDeAula):
       def __init__(self, professor, estudante, idioma, nivel, preco, identificador, hora_inicio, hora_fim, dia_semana):
            TipoDeAula.__init__(self, idioma, nivel, preco, identificador)
            Horario.__init__(self, hora_inicio, hora_fim, dia_semana)
+           self.horario = Horario(hora_inicio, hora_fim, dia_semana)
            self.professor = professor
            self.estudante = estudante
 

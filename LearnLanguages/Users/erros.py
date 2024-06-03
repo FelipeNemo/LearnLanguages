@@ -30,6 +30,7 @@ class ErroPaisAtualInvalido(Exception):
     def __str__(self):
         return "ErroPaisAtualInvalido (" + self.__msg +")"
     
+    
 #Class Idioma
 class ErroIdiomaInvalido(Exception):
     """Não é permitido idioma maior que 50 caracteres"""

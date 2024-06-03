@@ -50,16 +50,16 @@ de dinheiro entre carteiras. Feito!
 
 9) Implementar a classe abstrata Usuario: Feito!
 
-##### a) Atributos: 50% feito(tratar erros e por objetos das subclasses nos atributos lista)
+##### a) Atributos: 
 
 - i) Nome do usuário com no maximo 50 caracteres. Feito!
 - ii) E-mail com no maximo 50 caracteres. Feito!
 - iii) País de origem com no máximo 10 caracteres. Feito!
 - iv) País atual com no máximo 10 caracteres. Feito!
-- v) Lista de idiomas que o usuário sabe falar. 
-- vi) Lista de horários do usuário. 
+- v) Lista de idiomas que o usuário sabe falar. Feito!
+- vi) Lista de horários do usuário. Feito!
 - vii) Objeto do tipo carteira, necessário para efetuar ou receber pagamentos das
-aulas. 
+aulas. Feito!
 
 ##### b) Métodos:
 
@@ -71,54 +71,53 @@ sobre as atividades do usuário.
 10) Implemente a classe Estudante como uma subclasse de Usuario: Feito!
 
 ##### a) Atributos:
-- i) Lista de idiomas que o estudante deseja aprender.
-- ii) Lista de professores do estudante.
+- i) Lista de idiomas que o estudante deseja aprender. Feito!
+- ii) Lista de professores do estudante. Feito!
 
 ##### b) Métodos:
 - i) imprimirRelatorio:
-(1) Listar Idiomas que o estudante sabe falar;
-(2) Listar Idiomas que o estudante deseja aprender;
-(3) Listar horários do estudante;
-(4) Listar professores do estudante;
-(5) Listar aulas concluídas pelo estudante;
+(1) Listar Idiomas que o estudante sabe falar;  Feito!
+(2) Listar Idiomas que o estudante deseja aprender;  Feito!
+(3) Listar horários do estudante;  Feito!
+(4) Listar professores do estudante;  Feito!
+(5) Listar aulas concluídas pelo estudante;  Feito!
 (6) Exibir dados do professor favorito do estudante (com qual professor o
-estudante teve mais aulas, e quantas foram);
+estudante teve mais aulas, e quantas foram);  Feito!
 (7) Exibir idioma favorito do estudante (com qual idioma o estudante teve
-mais aulas, e quantas foram);
-(8) Exibir saldo da carteira do estudante.
+mais aulas, e quantas foram);  Feito!  
+(8) Exibir saldo da carteira do estudante.  Feito!
 - ii) agendarAula: Efetua o pedido de agendamento de uma aula com um
 professor. O pedido contém o horário e o tipo de aula. O estudante só pode
-realizar o pedido de agendamento se tiver saldo o suficiente na carteira.
+realizar o pedido de agendamento se tiver saldo o suficiente na carteira. Feito!
 - iii) confirmarQueAulaFoiConcluida: O estudante confima se a aula com o
 professor foi concluída. Se sim, 90% do valor do preço da aula deve ser
 transferido para a carteira do professor. Os 10% restantes do valor devem ser
 transferidos para a carteira do sistema. Caso a aula não tenha sido concluída,
-o dinheiro deve permanecer na carteira do estudante.
+o dinheiro deve permanecer na carteira do estudante. Feito!
 
-11) Implementar a classe Professor como uma subclasse de Usuario: 
-
+11) Implementar a classe Professor como uma subclasse de Usuario: Feito!
 ##### a) Atributos:
-- i) Lista de idiomas que o professor ensina.
-- ii) Lista de estudantes do professor.
+- i) Lista de idiomas que o professor ensina. Feito!
+- ii) Lista de estudantes do professor. Feito!
 
 ##### b) Métodos:
-- i) imprimirRelatorio:
-(1) Listar Idiomas que o professor sabe falar;
+- i) imprimirRelatorio: Feito!
+(1) Listar Idiomas que o professor sabe falar; Feito!
 
-(2) Listar Idiomas que o professor ensina;
+(2) Listar Idiomas que o professor ensina; Feito!
 
-(3) Listar horários do professor;
+(3) Listar horários do professor; Feito!
 
-(4) Listar de estudantes do professor;
+(4) Listar de estudantes do professor; Feito!
 
-(5) Listar aulas concluídas pelo professor;
+(5) Listar aulas concluídas pelo professor; Feito!
 
-(6) Exibir saldo da carteira do professor.
+(6) Exibir saldo da carteira do professor. Feito!
 
 - ii) aceitarPedidoDeAgendamento: Se o professor aceitar um pedido de
 agendamento, o horário do professor e do estudante devem ser marcados
 como não disponíveis. Usuários não podem ter duas aulas marcadas no
-mesmo horário.
+mesmo horário. Feito!
 
 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
 de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
