@@ -1,4 +1,4 @@
-# FelipeMichele
+# LearnLanguages
 
 # Sistema de ensino de idiomas
 Durante a disciplina de programação orientada a dados, vocês estão aprendendo a programar
@@ -121,7 +121,7 @@ mesmo horário. Feito!
 
 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
 de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
-também deve imprimir o relatório de cada usuário cadastrado no sistema.
+também deve imprimir o relatório de cada usuário cadastrado no sistema. Feito !
 
 ### Especificações e requisitos da aplicação de teste do pacote LearnLanguages:
 1) A aplicação deve receber como argumento na linha de comando uma lista de arquivos texto

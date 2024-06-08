@@ -43,7 +43,6 @@ class Usuario(metaclass=ABCMeta):
              raise ErroEmailInvalido(f"O e-mail deve ter no máximo {const.MAX_EMAIL} caracteres")
         else:
              self._email = email
-        
 
 
     @property  # Máximo 10 caracteres.
@@ -67,8 +66,7 @@ class Usuario(metaclass=ABCMeta):
         if len(paisAtual) > const.MAX_PAISATUAL:
              raise ErroPaisAtualInvalido(f"O país de atual deve ter no máximo {const.MAX_PAISATUAL} caracteres")
         else:
-             self._paisAtual = paisAtual
-
+            self._paisAtual = paisAtual
 
     @property
     def idiomas(self):
@@ -136,7 +134,7 @@ class Estudante(Usuario):
             "Idiomas que deseja aprender": self.idiomas_deseja_aprender(),
             "Horários do estudante": self.listar_horarios(),
             "Professores do estudante": self.lista_professores(),
-            "Aulas concluídas": self.aulas_concluidas,
+            "Aulas concluídas": self.obter_aulas_concluidas,
             "Professor favorito": self.exibir_professor_favorito(),
             "Idioma favorito": self.exibir_idioma_favorito(),
             "Saldo da carteira": self.saldo_carteira()
@@ -147,11 +145,11 @@ class Estudante(Usuario):
 
 #(1) Listar Idiomas que o estudante sabe falar;
     def idiomas_ja_sabe_falar(self):
-         return self._idiomas
+         return [f"{idioma.idioma} (Nível {idioma.nivel})" for idioma in self.idiomas]
     
 #(2) Listar Idiomas que o estudante deseja aprender;
     def idiomas_deseja_aprender(self):
-        return self.idiomas_aprender
+        return [f"{idioma.idioma} (Nível {idioma.nivel})" for idioma in self.idiomas_aprender]
     
 #(3) Listar horários do estudante;
     def listar_horarios(self):
@@ -159,10 +157,10 @@ class Estudante(Usuario):
     
 #(4) Listar professores do estudante;
     def lista_professores(self):
-        return self.historico_professores
+        return [str(professor) for professor in self.historico_professores]
     
 #(5) Listar aulas concluídas pelo estudante;
-    def aulas_concluidas(self):
+    def obter_aulas_concluidas(self):
         return self.aulas_concluidas
     
 #(6) Exibir dados do professor favorito do estudante (com qual professor o estudante teve mais aulas, e quantas foram);
@@ -197,10 +195,37 @@ class Estudante(Usuario):
           
 # iii) confirmarQueAulaFoiConcluida:
      
-    def confirmar_aula_concluida(self, aula):
-         if aula.horario in self.horarios:
-              self.horarios.remove(aula.horario)
-              self.aulas_concluidas.append(aula)
+    def confirmar_aula_concluida(self, aula, carteira_sistema):
+        if aula.horario in self.horarios:
+            self.horarios.remove(aula.horario)
+            self.aulas_concluidas.append(aula)
+            
+            # Transferir o valor da aula do estudante para o professor e sistema
+            valor_sistema = aula.preco * 0.1
+            valor_professor = aula.preco * 0.9
+
+            self.carteira.transferir(aula.preco, aula.professor.carteira)
+            aula.professor.carteira.transferir(valor_sistema, carteira_sistema)
+            
+        else:
+            raise ErroAulaInvalida("Aula não encontrada nos horários do estudante")
+        
+    def __str__(self):
+        return (
+            f"Nome: {self.nome}\n"
+            f"Email: {self.email}\n"
+            f"País de Origem: {self.paisOrigem}\n"
+            f"País Atual: {self.paisAtual}\n"
+            f"Idiomas que sabe falar: {', '.join(self.idiomas_ja_sabe_falar())}\n"
+            f"Idiomas que deseja aprender: {', '.join(self.idiomas_deseja_aprender())}\n"
+            f"Horários do estudante: {', '.join(self.listar_horarios())}\n"
+            f"Professores do estudante: {', '.join(self.lista_professores())}\n"
+            f"Aulas concluídas: {', '.join(self.obter_aulas_concluidas())}\n"
+            f"Professor favorito: {self.exibir_professor_favorito()}\n"
+            f"Idioma favorito: {self.exibir_idioma_favorito()}\n"
+            f"Saldo da carteira: {self.saldo_carteira()}"
+        )
+
       
 # 11) Implementar a classe Professor como uma subclasse de Usuario:
 
@@ -226,7 +251,7 @@ class Professor(Usuario):
             "Idiomas que o professor ensina": self.idiomas_deseja_ensinar(),
             "Horários do professor": self.listar_horarios(),
             "Estudantes do professor": self.lista_estudantes(),
-            "Aulas concluídas": self.aulas_concluidas,
+            "Aulas concluídas": self.obter_aulas_concluidas,
             "Saldo da carteira": self.saldo_carteira()
         }
         for chave, valor in relatorio.items():
@@ -234,11 +259,11 @@ class Professor(Usuario):
      
 #(1) Listar Idiomas que o professor sabe falar;
     def idiomas_ja_sabe_falar(self):
-         return self._idiomas
+         return  [f"{idioma.idioma} (Nível {idioma.nivel})" for idioma in self.idiomas]
     
 #(2) Listar Idiomas que o professor ensina;
     def idiomas_deseja_ensinar(self):
-        return self.idiomas_ensina
+        return [f"{idioma.idioma} (Nível {idioma.nivel})" for idioma in self.idiomas_ensina]
     
 #(3) Listar horários do professor;
     def listar_horarios(self):
@@ -249,57 +274,57 @@ class Professor(Usuario):
         return self.historico_estudantes
     
 #(5) Listar aulas concluídas pelo professor;
-    def aulas_concluidas(self):
+    def obter_aulas_concluidas(self):
         return self.aulas_concluidas
+
     
 #(6) Exibir saldo da carteira do professor.
     def saldo_carteira(self):
         return self.carteira.saldo
           
 # ii) aceitarPedidoDeAgendamento do professor:
-    def Agendamento_Professor(self, aula): # Verificar se o horário do professor está disponível
+    def Agendamento_Professor(self, aula): # (1) Se o professor está com horario indisponivel. 
         if aula.hora_inicio in self.horarios or aula.hora_fim in self.horarios: 
              return "Horário indisponível para o professor."  
     
     
-        for estudante in self.historico_estudantes: # Verificar se o horário do estudante está disponível
-            if aula.hora_inicio in estudante.horarios or aula.hora_fim in estudante.horarios:
+        for estudante in self.historico_estudantes: 
+            if aula.hora_inicio in estudante.horarios or aula.hora_fim in estudante.horarios: # Verificar se o horário do estudante está disponível
                  return f"Horário indisponível para o estudante {estudante.nome}." 
-        self.aulas_concluidas.append(aula)# Adicionar a aula à lista de aulas do professor e do estudante correspondente
+        self.aulas_concluidas.append(aula)# # (2) Horário do professor e do estudante devem ser marcados como não disponíveis. 
         for estudante in self.historico_estudantes:
           if estudante.nome == aula.estudante:
             estudante.aulas_concluidas.append(aula) 
             break
     
-    # Atualizar os horários do professor e do estudante
+    
         self.horarios.append(aula.hora_inicio)
         self.horarios.append(aula.hora_fim)
         for estudante in self.historico_estudantes:
-            if estudante.nome == aula.estudante:
+            if estudante.nome == aula.estudante: # (3) Usuários não podem ter duas aulas marcadas no mesmo horário.
                  estudante.horarios.append(aula.hora_inicio)
                  estudante.horarios.append(aula.hora_fim)
                  break
     
         return "Aula agendada com sucesso."  
-# (1) Se o professor aceitar um pedido de agendamento.     
-# (2) Horário do professor e do estudante devem ser marcados como não disponíveis.    
-# (3) Usuários não podem ter duas aulas marcadas no mesmo horário.
-     
+    
+
 # 12) Fornecer um método para imprimir o relatório do sistema, o qual deve informar a quantidade
 #de estudantes e professores cadastrados, bem como o saldo da carteira do sistema. O método
 #também deve imprimir o relatório de cada usuário cadastrado no sistema.
-     
-# OBS: Classe Sistema faz registra operações de marcação de aulas, saidas e entradas na carteira do aluno e do professor e sistema.
 
+# imprimirRelatorioSistema:
+def imprimirRelatorioSistema(estudantes, professores, carteira_sistema):
+    print(f"----- Relatório do Professor -----\n")
+    print(f"Quantidade de estudantes cadastrados: {len(estudantes)}") # (1) Informar quantidade de estudantes e professores cadastrados
+    print(f"Quantidade de professores cadastrados: {len(professores)}") # (2) Atribuir os 10% das aulas na carteira do sistema.
+    print(f"Saldo da carteira do sistema: {carteira_sistema.saldo}")
 
-class Sistema(Usuario):
-      pass
+    for estudante in estudantes: # (3) Imprimir o relatório de cada usuário(alunos).
+            print(estudante)
 
-# (1) Informar quantidade de estudantes e professores cadastrados
-# (2) Atribuir os 10% das aulas na carteira do sistema.
-# (3) Imprimir o relatório de cada usuário(professores e alunos) cadastrado no sistema
-
-
+    for professor in professores: # (3) Imprimir o relatório de cada usuário(professores).
+            print(professor)
 
 
 #---------------------------------------------------------------------------------------------------------------------------------------------
@@ -326,7 +351,7 @@ class Idioma:
         if isinstance(n, str) and len(n) <= const.MAX_IDIOMA:
             self.__idioma = n
         else:
-            raise ErroIdiomaInvalido(f"O nome do idioma não pode exceder {const.MAX_IDIOMA} caracteres.")
+             raise ErroIdiomaInvalido(f"O nome do idioma não pode exceder {const.MAX_IDIOMA} caracteres.")
 
     @idioma.deleter
     def idioma(self):
@@ -339,7 +364,7 @@ class Idioma:
     @nivel.setter
     def nivel(self, i):
         if isinstance(i, str) and i in const.NIVEL_PROFICIENCIA:
-            self.__nivel = i
+                self.__nivel = i
         else:
              raise ErroNivelInvalido(f"Nível de proficiência inválido. Escolha entre {const.NIVEL_PROFICIENCIA}.")
 
@@ -349,41 +374,41 @@ class Idioma:
 
     # Print objeto Idioma(nome, nivel)
     def __str__(self):
-        return f"Idioma: {self.idioma} - Nível: {self.nivel}!"
+         return f"Idioma: {self.idioma} - Nível: {self.nivel}!"
 
 
 # 5) Implementar a classe Horario para representar os horários em que o professor está disponível
 #para lecionar as aulas de idiomas. O pacote datetime pode ser utilizado para representar a
 #data. Métodos são opcionais.
 class Horario():
-      def __init__(self, hora_inicio, hora_fim, dia_semana):
+    def __init__(self, hora_inicio, hora_fim, dia_semana):
         self.hora_inicio = hora_inicio
         self.hora_fim = hora_fim
         self.dia_semana = dia_semana
 
-      @property    
-      def hora_inicio (self):
-            return self.__hora_inicio 
-      @hora_inicio.setter
-      def hora_inicio(self, hora_inicio):
-                        self.__hora_inicio = hora_inicio
+    @property    
+    def hora_inicio (self):
+         return self.__hora_inicio 
+    @hora_inicio.setter
+    def hora_inicio(self, hora_inicio):
+        self.__hora_inicio = hora_inicio
 
-      @property    
-      def hora_fim (self):
-            return self.__hora_fim 
-      @hora_fim.setter
-      def hora_fim(self, hora_fim):
+    @property    
+    def hora_fim (self):
+        return self.__hora_fim 
+    @hora_fim.setter
+    def hora_fim(self, hora_fim):
             self.__hora_fim = hora_fim
 
-      @property    
-      def dia_semana(self):
-            return self.__dia_semana
-      @dia_semana.setter
-      def dia_semana(self, dia_semana):
-            self.__dia_semana = dia_semana
+    @property    
+    def dia_semana(self):
+        return self.__dia_semana
+    @dia_semana.setter
+    def dia_semana(self, dia_semana):
+        self.__dia_semana = dia_semana
 
-      def __str__(self):
-            return f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}"
+    def __str__(self):
+        return f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}"
 
 
 
@@ -392,27 +417,27 @@ class Horario():
 #professores. Cada tipo de aula possui informações tais como idioma, preço, e identificador.
 
 class TipoDeAula(Idioma):
-      def __init__(self, idioma, nivel, preco, identificador):
+    def __init__(self, idioma, nivel, preco, identificador):
         super().__init__(idioma, nivel)  # Chama o construtor da classe pai para definir idioma e nivel
         self.preco = preco
         self.identificador = identificador
 
-      @property    
-      def preco (self):
-            return self.__preco 
-      @preco.setter
-      def preco(self, preco):
-            self.__preco = preco
+    @property    
+    def preco (self):
+        return self.__preco 
+    @preco.setter
+    def preco(self, preco):
+        self.__preco = preco
 
-      @property    
-      def identificador (self):
-            return self.__identificador
-      @identificador.setter
-      def identificador(self, identificador):
-            self.__identificador = identificador
+    @property    
+    def identificador (self):
+        return self.__identificador
+    @identificador.setter
+    def identificador(self, identificador):
+        self.__identificador = identificador
 
-      def __str__(self):
-           return f"Tipo de aula: {self.idioma} - Preço: {self.preco} - ID {self.identificador}"
+    def __str__(self):
+        return f"Tipo de aula: {self.idioma} - Preço: {self.preco} - ID {self.identificador}"
 
 # 7) Implementar a classe Aula. Uma aula reúne informações como professor, estudante, horário, e
 #tipo da aula.
@@ -420,31 +445,31 @@ class TipoDeAula(Idioma):
 # Herda de class Horario horario
       
 class Aula(Horario, TipoDeAula):
-      def __init__(self, professor, estudante, idioma, nivel, preco, identificador, hora_inicio, hora_fim, dia_semana):
-           TipoDeAula.__init__(self, idioma, nivel, preco, identificador)
-           Horario.__init__(self, hora_inicio, hora_fim, dia_semana)
-           self.horario = Horario(hora_inicio, hora_fim, dia_semana)
-           self.professor = professor
-           self.estudante = estudante
+    def __init__(self, professor, estudante, idioma, nivel, preco, identificador, hora_inicio, hora_fim, dia_semana):
+        TipoDeAula.__init__(self, idioma, nivel, preco, identificador)
+        Horario.__init__(self, hora_inicio, hora_fim, dia_semana)
+        self.horario = Horario(hora_inicio, hora_fim, dia_semana)
+        self.professor = professor
+        self.estudante = estudante
 
-      @property
-      def professor (self):
-            return self.__professor
-      @professor.setter
-      def professor(self, professor):
-            self.__professor = professor
+    @property
+    def professor (self):
+        return self.__professor
+    @professor.setter
+    def professor(self, professor):
+        self.__professor = professor
 
-      @property
-      def estudante(self):
-            return self.__estudante
-      @estudante.setter
-      def estudante(self, estudante):
-            self.__estudante = estudante
+    @property
+    def estudante(self):
+        return self.__estudante
+    @estudante.setter
+    def estudante(self, estudante):
+        self.__estudante = estudante
 
-      def __str__(self):
-           return (f"Aula: {self.idioma} - Professor: {self.professor} - Estudante: {self.estudante}, "
-                   f"Preço: {self.preco} - ID : {self.identificador}, "
-                   f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}")
+    def __str__(self):
+        return (f"Aula: {self.idioma} - Professor: {self.professor} - Estudante: {self.estudante}, "
+                f"Preço: {self.preco} - ID : {self.identificador}, "
+                f"Horário: {self.hora_inicio} - {self.hora_fim}, {self.dia_semana}")
            
             
 
@@ -455,27 +480,27 @@ class Aula(Horario, TipoDeAula):
       
 class Carteira():
      
-      def __init__(self,saldo):
-          self.__saldo = saldo
+    def __init__(self,saldo):
+        self.__saldo = saldo
 
-      @property
-      def saldo(self):
-          return self.__saldo
+    @property
+    def saldo(self):
+        return self.__saldo
       
-      @saldo.setter     
-      def saldo(self, saldo):
-            if saldo >= 0:
+    @saldo.setter     
+    def saldo(self, saldo):
+        if saldo >= 0:
                  self.__saldo = saldo
-            else:
-                 raise ErroSaldoInvalido("Saldo deve ser positivo ou 0 !")
+        else:
+            raise ErroSaldoInvalido("Saldo deve ser positivo ou 0 !")
       
-      def depositar(self, valor):
-            if valor > 0:
-                 self.__saldo += valor
-            else:
-                 raise ErroDepositoInvalido("Só é permitido depositar um valor menor ou igual a 0 !")
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+        else:
+            raise ErroDepositoInvalido("Só é permitido depositar um valor maior ou igual a 0 !")
 
-      def sacar(self, valor):
+    def sacar(self, valor):
         if 0 < valor <= self.__saldo: # Especificação de erro.
             self.__saldo -= valor
         else:
@@ -486,7 +511,7 @@ class Carteira():
  # (1)  Sacamos valor>0 da conta que transfere  
  # (2)  Depositamos valor na conta destino
         
-      def transferir(self, valor, conta_destino):
+    def transferir(self, valor, conta_destino):
         if not isinstance(conta_destino, Carteira): 
             raise ErroContaInvalida("Essa carteira não existente no sistema !")
         if 0 < valor <= self.__saldo: # Especificação de erro.

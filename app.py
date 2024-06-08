@@ -1,74 +1,35 @@
 import LearnLanguages.Users as l
 import datetime
-
-#print("CADASTRO ESCOLA DE INGLES\n")
-
-# A manipula;'ao do arquivo de entrada ser[a feita pelo app.py usando o modulo os
+#import modulo os
 
 try:
-    # input classe Idioma
-    #idioma = input("Digite o idioma:")
-    #nivel = input("Digite seu nível de proficiencia:")
 
-    # Criar uma instância da classe Idioma com os valores fornecidos pelo usuário.
-    #P1 = l.Idioma(idioma, nivel)
-    #P1 = l.Idioma("Inglês", "C1")
-    #print(P1)
+    # Exemplo de uso:
+    carteira_sistema = l.Carteira(0)
 
-    # Criar uma instância da classe Horario.
-    #H1 = l.Horario(datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
-    #print(H1)
+    carteira_estudante1 = l.Carteira(200)
+    carteira_estudante2 = l.Carteira(200)
 
-    # Criar uma instância da classe TipoDeAula.
-    #tipo_aula = l.TipoDeAula("Espanhol", "C1", 100, "AULA159")
-    #print(tipo_aula)  # Saída: Tipo de aula: Espanhol, preço 100, identificador AULA159
+    carteira_professor1 = l.Carteira(0)
+    carteira_professor2 = l.Carteira(0)
 
-    # Criar uma instância da classe Aula.
-    #A1 = l.Aula("Prof Bruce Lee", "Felipe", "Inglês", "B2", 72.15, "521637-5", datetime.time(9, 0), datetime.time(12, 0), "Segunda-feira")
-    #print(A1)
-
-    # Criar uma instância da classe Carteira
-    #CE = l.Carteira(200)
-    #CP = l.Carteira(200)
-
-    #print("Saldo inicial Estudante : ",  CE.saldo)
-    #print("Saldo inicial  Professor : ",  CP.saldo)
-
-
-    #CE.depositar(200)
-    #print("Saldo depois do deposito na carteira estudante : ",  CE.saldo)
-    
-
-    #CE.sacar(50) # fica 350
-    #print("Saldo depois do saque na carteira estudante : ",  CE.saldo)
-    
-    #CE.transferir(30, CP)
-    #print("Saldo depois da tranferencia da carteira estudante: ",  CE.saldo)
-    #print("Saldo depois de estudante tranferir para carteira professor : ",  CP.saldo)
-
-
-    
-
-    # Exemplo de uso
-    C1 = l.Carteira(300)
-    C2 = l.Carteira(300)
-    
-    #Objetos Estudante e professor
-    E = l.Estudante(nome="Felipe", email="felipedata20@gmail.com", paisOrigem="Brasil", paisAtual="EUA", carteira=C1)
-    P = l.Professor(nome="Bruce lee", email="pucrs20@gmail.com", paisOrigem="Brasil", paisAtual="Alemanhã", carteira=C2)
+    estudante1 = l.Estudante("Felipe", "felipe@gmail.com", "Brasil", "Brasil", carteira_estudante1, [l.Idioma("Inglês", "Nativo")], [])
+    estudante2 = l.Estudante("Eduardo", "eduardo@gmail.com", "Brasil", "Brasil", carteira_estudante2, [l.Idioma("Inglês", "Nativo")], [])
+    professor1 = l.Professor("Dalvan", "Dalvan@exgmail.com", "Brasil", "Brasil", carteira_professor1, [l.Idioma("Português", "B2")], [])
+    professor2 = l.Professor("Gabriel", "Gabriel@gmail.com", "Brasil", "Brasil", carteira_professor2, [l.Idioma("Português", "B2")], [])
 
     #Aula estudante
-    E.adicionar_idioma(l.Idioma("Inglês", "A1"))
-    E.adicionar_idioma(l.Idioma("Espanhol", "C2"))
+    estudante1 .adicionar_idioma(l.Idioma("Inglês", "A1"))
+    estudante2.adicionar_idioma(l.Idioma("Espanhol", "C2"))
 
     # Agendar aula para o estudante
-    P.adicionar_idioma(l.Idioma("Inglês", "A1"))
-    P.adicionar_idioma(l.Idioma("Espanhol", "C2"))
+    professor1.adicionar_idioma(l.Idioma("Inglês", "A1"))
+    professor2.adicionar_idioma(l.Idioma("Espanhol", "C2"))
     
     # Adicionar professores ao histórico do estudante
     aula1 = l.Aula(
-        professor="Professor A",
-        estudante="Felipe",
+        professor=professor1,
+        estudante=estudante1,
         idioma="Francês",
         nivel="B2",
         preco=100,
@@ -78,55 +39,57 @@ try:
         dia_semana="Segunda"
     )
     
-    # Imprimir relatório do estudante
-    E.agendar_aula(aula1)
-    E.confirmar_aula_concluida(aula1)
+
+    # Transferir saldo da carteira do estudante para a carteira do professor
+    #carteira_estudante1.depositar(100)
+    carteira_estudante1.transferir(100, carteira_professor1)
     
-    E.historico_professores.append("Professor A")
-    E.historico_professores.append("Professor B")
-    E.historico_professores.append("Professor A")
 
-    # Imprimir relatórios
-    print("RELATORIO ESTUDANTE")
-    E.imprimirRelatorio()
-    print("\n")
-    print("RELATORIO PROFESSOR")
-    P.imprimirRelatorio()
 
-#Class Usuario    
+    # Imprimir relatório do estudante
+    estudante1.agendar_aula(aula1)
+    estudante1.confirmar_aula_concluida(aula1,carteira_sistema )
+
+
+
+    # Criando alguns usuários
+    
+
+    # Listas de estudantes e professores
+    estudantes = [estudante1,estudante2 ]
+    professores = [professor1,professor2]
+
+    # Imprimindo o relatório do sistema
+    l.imprimirRelatorioSistema(estudantes, professores, carteira_sistema)
 except l.ErroNomeInvalido as e:
-    print(e) 
+    print(e)
 
 except l.ErroEmailInvalido as e:
-    print(e) 
+    print(e)
 
 except l.ErroPaisDeOrigemInvalido as e:
-    print(e) 
+    print(e)
 
 except l.ErroPaisAtualInvalido as e:
-    print(e) 
+    print(e)
 
-#Class Idioma
-except l.ErroIdiomaInvalido as e:
-    print(e)   
+except l.ErroAulaInvalida as e:
+    print(e)
 
-except l.ErroNivelInvalido as e:
-     print(e)
 
-#Class Carteira 
+
+# Class Carteira
 except l.ErroSaldoInvalido as e:
-     print(e)
+    print(e)
 
 except l.ErroDepositoInvalido as e:
-     print(e)
+    print(e)
 
 except l.ErroSaqueIndisponivel as e:
-     print(e)
+    print(e)
 
 except l.ErroContaInvalida as e:
-     print(e)
+    print(e)
 
 except l.ErroSaldoInsuficiente as e:
-     print(e)
-
-
+    print(e)

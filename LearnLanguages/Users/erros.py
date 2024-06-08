@@ -30,6 +30,12 @@ class ErroPaisAtualInvalido(Exception):
     def __str__(self):
         return "ErroPaisAtualInvalido (" + self.__msg +")"
     
+class ErroAulaInvalida(Exception):
+    """Aula não encontrada nos horários do estudante"""
+    def __init__(self, mensagem):
+        self.__msg=mensagem
+    def __str__(self):
+        return "ErroAulaInvalida (" + self.__msg +")"
     
 #Class Idioma
 class ErroIdiomaInvalido(Exception):
